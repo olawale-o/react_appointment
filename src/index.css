@@ -94,7 +94,8 @@ select {
   font-size: 1.8rem;
 }
 
-.doctor__new {
+.doctor__new,
+.booking__new {
   background: #97bf0f;
   background-image: url("./assets/doctor-bg.jpg");
   background-size: cover;
@@ -108,12 +109,12 @@ select {
   text-align: center;
 }
 
-.doctor__form {
+.form {
   width: 50%;
   margin: 0 auto;
 }
 
-.doctor__form form {
+.form form {
   width: 80%;
 }
 

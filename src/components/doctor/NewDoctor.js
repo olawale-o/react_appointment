@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewDoctor = () => (
   <div className="doctor__new">
-    <div className="doctor__form">
+    <div className="form">
       <form>
         <h1 className="heading1 mb-2" style={{ color: '#fff' }}>ADD A NEW DOCTOR</h1>
         <div className="field">
