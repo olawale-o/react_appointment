@@ -10,7 +10,7 @@ const Login = () => (
           <input type="text" placeholder="Username" className={style.input} required />
         </div>
         <div className="actions">
-          <input type="submit" value="Login" className={style.loginBtn} />
+          <input type="submit" value="Login" className="btn loginBtn" />
         </div>
       </form>
     </div>
