@@ -13,7 +13,7 @@ const Navigation = () => (
           <NavLink to="/" className={styles.navLink} activeclassname="active">MEET OUR DOCTORS</NavLink>
         </li>
         <li className={styles.navItem}>
-          <NavLink to="/add-a-doctor" activeclassname="active" className={styles.navLink}>ADD A DOCTOR</NavLink>
+          <NavLink to="/doctor/new" activeclassname="active" className={styles.navLink}>ADD A DOCTOR</NavLink>
         </li>
         <li className={styles.navItem}>
           <a href="/" className={styles.navLink}>BOOK APPOINTMENT</a>

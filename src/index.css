@@ -31,6 +31,15 @@ img {
   border-radius: inherit;
 }
 
+select {
+  width: 100%;
+  padding: 1rem 0.8rem;
+  outline: none;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  color: #ccc;
+}
+
 .home__header {
   margin-bottom: 2rem;
   text-align: center;
@@ -45,36 +54,8 @@ img {
   color: #ccc;
 }
 
-.card {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 auto;
-}
-
-.image {
-  width: 300px;
-  height: 300px;
-  border-radius: 150px;
-  overflow: hidden;
-  margin-bottom: 2rem;
-}
-
-.card__name {
-  margin-bottom: 3rem;
-  font-size: 3rem;
-}
-
-.card__description {
-  font-size: 1.5rem;
-  margin-bottom: 3rem;
-}
-
-.card__link {
-  font-size: 1.5rem;
-  text-decoration: underline;
-  margin-bottom: 2rem;
+.mb-2 {
+  margin-bottom: 4rem;
 }
 
 .slider .slick-arrow {
@@ -88,4 +69,74 @@ img {
   height: 70px;
   width: 100px;
   border-radius: 100px;
+}
+
+.field {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 0.8rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+.textarea {
+  padding: 1rem 0.8rem;
+  outline: none;
+  border-radius: 5px;
+  letter-spacing: 0.5px;
+  font-size: 1.8rem;
+}
+
+.doctor__new {
+  background: #97bf0f;
+  background-image: url("./assets/doctor-bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: multiply;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.doctor__form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.doctor__form form {
+  width: 80%;
+}
+
+.btn {
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  padding: 1rem 0.8rem;
+  outline: none;
+}
+
+.loginBtn {
+  background: #2f007b;
+  border-color: #2f007b;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.addBtn {
+  background: #eee;
+  border-color: #eee;
+  border-radius: 10px;
+  color: #97bf0f;
 }
