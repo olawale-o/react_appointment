@@ -4,15 +4,27 @@ import Login from './components/authentication/Login';
 import Home from './components/home/Home';
 import List from './components/doctor/List';
 import NewDoctor from './components/doctor/NewDoctor';
+import Detail from './components/doctor/Detail';
+import PrivateRoute from './components/routes/PrivateRoute';
 
 const App = () => (
   <div className="App">
     <Routes>
-      <Route path="/" element={<Home />}>
+      <Route path="/login" element={<Login />} exact />
+      <Route
+        path="/"
+        element={
+          (
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          )
+        }
+        exact
+      >
         <Route path="/" element={<List />} />
         <Route path="doctor/new" element={<NewDoctor />} />
       </Route>
-      <Route path="/login" element={<Login />} exact />
     </Routes>
   </div>
 );
