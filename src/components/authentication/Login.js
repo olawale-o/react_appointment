@@ -49,7 +49,7 @@ const Login = () => {
           <div className="actions">
             {isLoading
               ? <p>Loading</p>
-              : <input type="submit" value="Login" className={style.loginBtn} />}
+              : <input type="submit" value="Login" className="btn loginBtn" />}
           </div>
         </form>
       </div>
