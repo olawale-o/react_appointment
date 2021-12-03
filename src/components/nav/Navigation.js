@@ -16,10 +16,10 @@ const Navigation = () => (
           <NavLink to="/doctor/new" activeclassname="active" className={styles.navLink}>ADD A DOCTOR</NavLink>
         </li>
         <li className={styles.navItem}>
-          <a href="/" className={styles.navLink}>BOOK APPOINTMENT</a>
+          <NavLink to="/booking/new" className={styles.navLink}>BOOK APPOINTMENT</NavLink>
         </li>
         <li className={styles.navItem}>
-          <a href="/" className={styles.navLink}>MY BOOKINGS</a>
+          <NavLink to="/booking/all" className={styles.navLink}>MY BOOKINGS</NavLink>
         </li>
         <li className={styles.navItem}>
           <a href="/" className={styles.navLink}>DELETE A DOCTOR</a>
