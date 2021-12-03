@@ -24,6 +24,7 @@ const App = () => (
       >
         <Route path="/" element={<List />} />
         <Route path="doctor/new" element={<NewDoctor />} />
+        <Route path="doctor/:id" element={<Detail />} />
       </Route>
     </Routes>
   </div>
