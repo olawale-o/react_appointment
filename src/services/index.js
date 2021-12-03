@@ -5,3 +5,8 @@ export const login = (credentials) => {
   const response = await post(`${BASE_URI}/users/login`, credentials);
   return response.json();
 };
+
+export const register = (credentials) => {
+  const response = await post(`${BASE_URI}/users`, credentials);
+  return response.json();
+};
