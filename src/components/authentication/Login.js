@@ -9,6 +9,9 @@ const Login = () => (
         <div className={style.field}>
           <input type="text" placeholder="Username" className={style.input} required />
         </div>
+        <div className={style.field}>
+          <input type="password" placeholder="Password" className={style.input} required />
+        </div>
         <div className="actions">
           <input type="submit" value="Login" className={style.loginBtn} />
         </div>
