@@ -6,6 +6,9 @@ const post = async (url, credentials = {}) => {
       'Content-type': 'application/json; Charset=UTF-8',
     },
   });
+  if (response.status === 400 || response.status === 401) {
+    throw new Error('Please check your credentials');
+  }
   return response;
 };
 
