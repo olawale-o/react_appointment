@@ -13,3 +13,15 @@ export const login = (credentials) => (
     }
   }
 );
+export const register = (credentials) => (
+  async function register(dispatch) {
+    dispatch({ type: AUTH_LOADING });
+    try {
+      const response = await register(credentials);
+      dispatch({ type: AUTH_SUCCESS, payload: response });
+    } catch (error) {
+      console.log('error', error);
+      dispatch({ type: AUTH_FAIL, payload: error });
+    }
+  }
+);
