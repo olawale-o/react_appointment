@@ -12,7 +12,12 @@ export const registerService = async (credentials) => {
   return response.json();
 };
 
-export const getDoctorsService = async (credentials) => {
+export const getDoctorsService = async () => {
   const response = await get(`${BASE_URI}/doctors`);
+  return response.json();
+};
+
+export const getDoctorService = async (id) => {
+  const response = await get(`${BASE_URI}/doctors/{id}`);
   return response.json();
 };
