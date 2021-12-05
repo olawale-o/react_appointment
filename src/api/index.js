@@ -13,7 +13,7 @@ export const post = async (url, credentials = {}) => {
 };
 
 export const get = async (url) => {
-  const response =  await fetch(url, {
+  const response = await fetch(url, {
     headers: {
       'Content-type': 'application/json; Charset=UTF-8',
     },
