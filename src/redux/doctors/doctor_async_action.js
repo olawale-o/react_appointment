@@ -3,7 +3,7 @@ import {
   ALL_DOCTORS,
   REQUEST_FAILURE,
   REQUEST_LOADING,
-  SINGLE_DOCTOR
+  SINGLE_DOCTOR,
 } from './action_types';
 
 export const getDoctors = () => (
@@ -31,4 +31,3 @@ export const getDoctor = (id) => (
     }
   }
 );
-  
