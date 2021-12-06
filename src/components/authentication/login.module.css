@@ -1,0 +1,49 @@
+.loginContainer {
+  background: #ffb400;
+  width: 100%;
+  min-height: 100vh;
+  background-image: url("../../assets/doctor.jpg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: multiply;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form h3 {
+  font-size: 3rem;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #eee;
+}
+
+.field {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 0.8rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  letter-spacing: 0.5px;
+}
+
+.loginBtn {
+  width: 100%;
+  padding: 1rem 0.8rem;
+  background: #2f007b;
+  border-color: #2f007b;
+  outline: none;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
