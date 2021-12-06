@@ -1,9 +1,12 @@
-export const post = async (url, credentials = {}) => {
+import { getStorage } from '../scripts/storage';
+
+export const post = async (url, credentials = {}, token = '') => {
   const response = await fetch(url, {
     method: 'POST',
     body: JSON.stringify(credentials),
     headers: {
       'Content-type': 'application/json; Charset=UTF-8',
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
   });
   if (response.status === 400 || response.status === 401) {
@@ -13,11 +16,14 @@ export const post = async (url, credentials = {}) => {
 };
 
 export const get = async (url) => {
-  const response = await fetch(url, {
+  const token = getStorage('token');
+  const headers = {
     headers: {
       'Content-type': 'application/json; Charset=UTF-8',
+      Authorization: `Bearer ${token}`,
     },
-  });
+  };
+  const response = await fetch(url, headers);
   if (response.status === 400 || response.status === 401) {
     throw new Error('Please check your credentials');
   }
