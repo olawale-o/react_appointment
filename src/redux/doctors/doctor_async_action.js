@@ -11,7 +11,7 @@ export const getDoctors = () => (
     dispatch({ type: REQUEST_LOADING });
     try {
       const response = await getDoctorsService();
-      dispatch({ type: ALL_DOCTORS, payload: response });
+      dispatch({ type: ALL_DOCTORS, payload: response.data });
     } catch (error) {
       dispatch({ type: REQUEST_FAILURE, payload: error });
     }

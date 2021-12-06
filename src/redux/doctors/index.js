@@ -15,7 +15,7 @@ const initialState = {
 const doctorReducer = (state = initialState, action) => {
   switch (action.type) {
     case ALL_DOCTORS:
-      return { ...state, doctors: action.payload, loading: false };
+      return { ...state, doctors: action.payload.doctors, loading: false };
     case SINGLE_DOCTOR:
       return { ...state, doctor: action.payload, loading: false };
     case REQUEST_LOADING:
