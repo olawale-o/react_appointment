@@ -7,26 +7,24 @@ import {
 } from './action_types';
 
 export const getDoctors = () => (
-  async function (dispatch) {
+  async function getDoctors(dispatch) {
     dispatch({ type: REQUEST_LOADING });
     try {
       const response = await getDoctorsService();
       dispatch({ type: ALL_DOCTORS, payload: response });
     } catch (error) {
-      console.log(error);
       dispatch({ type: REQUEST_FAILURE, payload: error });
     }
   }
 );
 
 export const getDoctor = (id) => (
-  async function (dispatch) {
+  async function getDoctor(dispatch) {
     dispatch({ type: REQUEST_LOADING });
     try {
       const response = await getDoctorService(id);
       dispatch({ type: SINGLE_DOCTOR, payload: response });
     } catch (error) {
-      console.log(error);
       dispatch({ type: REQUEST_FAILURE, payload: error });
     }
   }
