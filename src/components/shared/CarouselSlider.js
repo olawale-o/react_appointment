@@ -9,7 +9,7 @@ const CarouselSlider = ({ doctors }) => {
   const doctorList = doctors.map((doctor) => (<DoctorCard key={doctor.id} doctor={doctor} />));
   return (
     <div className="slider" style={{ width: '100%' }}>
-      <Slider slidesToShow={2}>{doctorList}</Slider>
+      <Slider slidesToShow={1}>{doctorList}</Slider>
     </div>
   );
 };
