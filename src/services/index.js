@@ -1,5 +1,5 @@
 import { post, get } from '../api';
-import { setStorage } from '../scripts/storage';
+import { getStorage, setStorage } from '../scripts/storage';
 
 const BASE_URI = 'http://localhost:3000/v1';
 
@@ -22,5 +22,11 @@ export const getDoctorsService = async () => {
 
 export const getDoctorService = async (id) => {
   const response = await get(`${BASE_URI}/doctors/${id}`);
+  return response.json();
+};
+
+export const addDoctorService = async (doctor) => {
+  const token = getStorage('token');
+  const response = await post(`${BASE_URI}/doctors`, doctor, token, true);
   return response.json();
 };
