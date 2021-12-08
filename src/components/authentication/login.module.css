@@ -33,17 +33,3 @@
   font-size: 1.8rem;
   letter-spacing: 0.5px;
 }
-
-.loginBtn {
-  width: 100%;
-  padding: 1rem 0.8rem;
-  background: #2f007b;
-  border-color: #2f007b;
-  outline: none;
-  border-radius: 10px;
-  color: #fff;
-  font-size: 1.5rem;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
