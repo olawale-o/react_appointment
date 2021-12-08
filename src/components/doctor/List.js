@@ -10,6 +10,7 @@ const List = () => {
   useEffect(() => {
     dispatch(getDoctors());
   }, []);
+
   return (
     <div className="doctor__list" style={{ overflowX: 'hidden', paddingTop: '6rem' }}>
       {loading
