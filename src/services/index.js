@@ -30,3 +30,14 @@ export const addDoctorService = async (doctor) => {
   const response = await post(`${BASE_URI}/doctors`, doctor, token, true);
   return response.json();
 };
+
+export const createAppointmentService = async (appointment) => {
+  const token = getStorage('token');
+  const response = await post(`${BASE_URI}/appointments`, appointment, token);
+  return response.json();
+};
+
+export const getAppointmentsService = async () => {
+  const response = await get(`${BASE_URI}/appointments`);
+  return response.json();
+};
