@@ -24,7 +24,7 @@ npm install
 # Usage
 ```bash
 npm start
-
+```
 
 👤 **Omoogun Olawale**
 
