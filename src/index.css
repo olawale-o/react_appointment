@@ -97,7 +97,8 @@ select {
   font-size: 1.8rem;
 }
 
-.doctor__new {
+.doctor__new,
+.booking__new {
   background: #97bf0f;
   background-image: url("./assets/doctor-bg.jpg");
   background-size: cover;
@@ -111,13 +112,19 @@ select {
   text-align: center;
 }
 
-.doctor__form {
+.form {
   width: 50%;
   margin: 0 auto;
 }
 
-.doctor__form form {
+.form form {
   width: 80%;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -144,6 +151,15 @@ select {
   color: #97bf0f;
 }
 
+.form__submission-indicator {
+  border: 1px solid #eee;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-bottom: 2px solid #1f250a;
+  animation: loading 1s linear infinite;
+}
+
 .loading__indicator {
   border: 1px solid #eee;
   width: 100px;
@@ -165,4 +181,51 @@ select {
   100% {
     transform: rotate(360deg);
   }
+}
+
+.appointment__container {
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.appointment__info {
+  display: flex;
+  align-items: center;
+}
+
+.appointment__list {
+  margin-top: 4rem;
+}
+
+.appointment__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appointment__info img {
+  margin-right: 1.5rem;
+}
+
+.fs-3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.fs-6 {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+span i {
+  cursor: pointer;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  margin: 2rem 0;
 }

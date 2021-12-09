@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addDoctor } from '../../redux/doctors/doctor_async_action';
+import doctorSelector from '../../redux/doctors/doctor_selector';
 
 const NewDoctor = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { loading } = useSelector(doctorSelector);
   const [fullname, setFullName] = useState('');
   const [city, setCity] = useState();
   const [specialty, setSpecialty] = useState('');
@@ -76,8 +78,10 @@ const NewDoctor = () => {
               onChange={(e) => setPicture(e.target.files[0])}
             />
           </div>
-          <div className="action">
-            <input type="submit" value="Add Doctor" className="btn addBtn" />
+          <div className="actions">
+            {loading
+              ? <div className="form__submission-indicator" />
+              : <input type="submit" value="Add Doctor" className="btn addBtn" />}
           </div>
         </form>
       </div>
