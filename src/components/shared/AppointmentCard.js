@@ -6,7 +6,16 @@ const AppointmentCard = ({ appointment }) => (
   <>
     <div className="appointment__item">
       <div className="appointment__info">
-        <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" style={{ width: '40px', height: '40px', borderRadius: '50%' }} alt="" />
+        <img
+          src={`http://localhost:3000${appointment.picture}`}
+          style={{
+            width: '40px',
+            height: '40px',
+            borderRadius: '50%',
+            objectFit: 'cover',
+          }}
+          alt="appointment"
+        />
         <span className="fs-3">{appointment.fullname}</span>
       </div>
       <div className="appointment__city">
@@ -35,5 +44,6 @@ AppointmentCard.propTypes = {
     specialty: PropType.string,
     city: PropType.string,
     appointment_date: PropType.string,
+    picture: PropType.string,
   }).isRequired,
 };

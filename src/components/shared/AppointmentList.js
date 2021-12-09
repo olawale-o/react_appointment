@@ -22,5 +22,6 @@ AppointmentList.propTypes = {
     specialty: PropType.string,
     city: PropType.string,
     appointment_date: PropType.string,
+    picture: PropType.string,
   })).isRequired,
 };
