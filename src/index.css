@@ -167,3 +167,50 @@ select {
     transform: rotate(360deg);
   }
 }
+
+.appointment__container {
+  background-color: #fff;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.appointment__info {
+  display: flex;
+  align-items: center;
+}
+
+.appointment__list {
+  margin-top: 4rem;
+}
+
+.appointment__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.appointment__info img {
+  margin-right: 1.5rem;
+}
+
+.fs-3 {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.fs-6 {
+  font-size: 2.5rem;
+  font-weight: 300;
+}
+
+span i {
+  cursor: pointer;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  margin: 2rem 0;
+}
