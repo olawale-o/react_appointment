@@ -1,4 +1,5 @@
 import React from 'react';
+import { DateTime } from 'luxon';
 import PropType from 'prop-types';
 
 const AppointmentCard = ({ appointment }) => (
@@ -15,7 +16,7 @@ const AppointmentCard = ({ appointment }) => (
         <span className="fs-3">{appointment.specialty}</span>
       </div>
       <div className="appointment__date">
-        <span className="fs-3">2020-02-08</span>
+        <span className="fs-3">{DateTime.fromISO(appointment.appointment_date).toFormat('yyyy-LL-dd')}</span>
       </div>
       <span className="fs-6">
         <i className="bx bxs-trash-alt" />
