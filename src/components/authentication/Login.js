@@ -48,7 +48,7 @@ const Login = () => {
           </div>
           <div className="actions">
             {isLoading
-              ? <p>Loading</p>
+              ? <div className="form__submission-indicator" />
               : <input type="submit" value="Login" className="btn loginBtn" />}
           </div>
         </form>

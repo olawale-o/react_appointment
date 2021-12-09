@@ -121,6 +121,12 @@ select {
   width: 80%;
 }
 
+.actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .btn {
   font-size: 1.5rem;
   border: none;
@@ -143,6 +149,15 @@ select {
   border-color: #eee;
   border-radius: 10px;
   color: #97bf0f;
+}
+
+.form__submission-indicator {
+  border: 1px solid #eee;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border-bottom: 2px solid #1f250a;
+  animation: loading 1s linear infinite;
 }
 
 .loading__indicator {

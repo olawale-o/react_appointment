@@ -9,7 +9,7 @@ const New = () => {
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
   const { doctors } = useSelector(doctorsSelector);
-  const { message } = useSelector(appointmentSelector);
+  const { message, loading } = useSelector(appointmentSelector);
   const handleSubmit = (e) => {
     e.preventDefault();
     const credentials = {
@@ -50,8 +50,10 @@ const New = () => {
               required
             />
           </div>
-          <div className="action">
-            <input type="submit" value="Book" className="btn addBtn" />
+          <div className="actions">
+            {loading
+              ? <div className="form__submission-indicator" />
+              : <input type="submit" value="Book" className="btn addBtn" />}
           </div>
         </form>
       </div>
