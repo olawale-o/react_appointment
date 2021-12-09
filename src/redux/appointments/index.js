@@ -6,7 +6,7 @@ import {
 } from './action_types';
 
 const initialState = {
-  appoinntments: [],
+  appointments: [],
   loading: false,
   error: null,
   message: null,
@@ -15,7 +15,7 @@ const initialState = {
 const appointmentReducer = (state = initialState, action) => {
   switch (action.type) {
     case ALL_APPOINTMENTS:
-      return { ...state, appoinntments: action.payload, loading: false };
+      return { ...state, appointments: action.payload, loading: false };
     case REQUEST_LOADING:
       return { ...state, loading: true };
     case REQUEST_FAILURE:
