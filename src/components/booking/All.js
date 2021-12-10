@@ -14,10 +14,15 @@ const All = () => {
   return (
     <div className="Appointments" style={{ background: 'whitesmoke', minHeight: '700px', paddingTop: '10rem' }}>
       <div className="appointment__container">
-        <h1 className="heading1">My Appointments</h1>
-        { loading
-          ? <div className="loading__indicator" />
-          : (<AppointmentList appointments={appointments} />)}
+        {loading && <div className="loading__indicator" />}
+        { appointments.length > 0
+          && (
+            <>
+              <h1 className="heading1">My Appointments</h1>
+              <AppointmentList appointments={appointments} />
+            </>
+          )}
+        { appointments.length === 0 && (<div style={{ fontSize: '3rem', textAlign: 'center' }}>No appointments yet</div>) }
       </div>
     </div>
   );
