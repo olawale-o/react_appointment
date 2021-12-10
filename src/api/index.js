@@ -29,3 +29,20 @@ export const get = async (url) => {
   }
   return response;
 };
+
+export const remove = async (url) => {
+  const token = getStorage('token');
+  const headers = {
+    headers: {
+      'Content-type': 'application/json; Charset=UTF-8',
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await fetch(url, {
+    method: 'DELETE',
+    ...headers,
+  });
+  if (response.status === 400 || response.status === 401) {
+    throw new Error('Please check your credentials');
+  }
+};
