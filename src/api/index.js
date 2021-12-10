@@ -1,5 +1,7 @@
 import { getStorage } from '../scripts/storage';
 
+const token = getStorage('token');
+
 export const post = async (url, options = {}) => {
   const { credentials = {}, token = '', picture = false } = options;
   const headers = {
@@ -20,7 +22,6 @@ export const post = async (url, options = {}) => {
 };
 
 export const get = async (url) => {
-  const token = getStorage('token');
   const headers = {
     headers: {
       'Content-type': 'application/json; Charset=UTF-8',
@@ -35,7 +36,6 @@ export const get = async (url) => {
 };
 
 export const remove = async (url) => {
-  const token = getStorage('token');
   const headers = {
     headers: {
       'Content-type': 'application/json; Charset=UTF-8',
