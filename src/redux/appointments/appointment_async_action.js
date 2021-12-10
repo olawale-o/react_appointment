@@ -1,9 +1,14 @@
-import { createAppointmentService, getAppointmentsService } from '../../services';
+import {
+  createAppointmentService,
+  getAppointmentsService,
+  deleteAppointmentService,
+} from '../../services';
 import {
   allAppointments,
   failure,
   loading,
   success,
+  deleteAppointment,
 } from './action_creators';
 
 export const createAppointment = (appointment) => (
@@ -24,6 +29,18 @@ export const getAppointments = () => (
     try {
       const { data: { appointments } } = await getAppointmentsService();
       dispatch(allAppointments(appointments));
+    } catch (error) {
+      dispatch(failure(error.message));
+    }
+  }
+);
+
+export const removeAppointment = (id) => (
+  async function removeAppointment(dispatch) {
+    dispatch(loading());
+    try {
+      await deleteAppointmentService(id);
+      dispatch(deleteAppointment({ id, message: 'appointment deleted' }));
     } catch (error) {
       dispatch(failure(error.message));
     }
