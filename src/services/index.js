@@ -1,4 +1,4 @@
-import { post, get } from '../api';
+import { post, get, remove } from '../api';
 import { getStorage, setStorage } from '../scripts/storage';
 
 const BASE_URI = 'http://localhost:3000/v1';
@@ -40,4 +40,8 @@ export const createAppointmentService = async (appointment) => {
 export const getAppointmentsService = async () => {
   const response = await get(`${BASE_URI}/appointments`);
   return response.json();
+};
+
+export const deleteAppointmentService = async (id) => {
+  await remove(`${BASE_URI}/appointments/${id}`);
 };
