@@ -1,23 +1,44 @@
 .Navigation {
-  display: none;
-  min-height: 700px;
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 900;
+  transform: translateX(-220px);
+  transition: transform 0.3s linear;
+  min-height: 700px;
   border-right: 1px solid #e6e6e6;
-  background: #fff;
+}
+
+.showHeader {
+  width: 280px;
+  transform: translateX(0);
+}
+
+.menu {
+  background: none;
+  outline: none;
+  border: none;
+  font-size: 3rem;
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  z-index: 1000;
+  cursor: pointer;
 }
 
 .nav {
+  margin-top: 1rem;
+  background: #fff;
   padding-left: 2rem;
   padding-top: 3rem;
-  position: relative;
   min-height: inherit;
+  position: relative;
 }
 
 .logo {
   margin-bottom: 4rem;
+  display: flex;
+  justify-content: space-between;
   transform: rotate(-10deg);
 }
 
@@ -79,8 +100,13 @@
 
 @media screen and (min-width: 992px) {
   .Navigation {
-    display: block;
     width: 25vw;
+    transform: translateX(0);
+  }
+
+  .menu {
+    display: none;
+    visibility: hidden;
   }
 
   .logoLink {
