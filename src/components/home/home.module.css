@@ -9,9 +9,9 @@
   width: 100%;
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 992px) {
   .child {
     margin-left: auto;
-    width: 80vw;
+    width: 75vw;
   }
 }

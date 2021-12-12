@@ -12,6 +12,8 @@
 .nav {
   padding-left: 2rem;
   padding-top: 3rem;
+  position: relative;
+  min-height: inherit;
 }
 
 .logo {
@@ -20,7 +22,7 @@
 }
 
 .logoLink {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #000;
   font-style: italic;
 }
@@ -35,15 +37,15 @@
 }
 
 .navLink {
-  font-size: 1.6rem;
+  font-size: 1rem;
   text-decoration: none;
   color: #454545;
-  font-weight: 600;
   text-transform: uppercase;
   width: calc(100% - 20px);
   display: block;
   padding: 1.2rem;
   margin-left: 20px;
+  font-weight: bolder;
 }
 
 .navLink:hover {
@@ -51,9 +53,41 @@
   color: #fff;
 }
 
-@media screen and (min-width: 800px) {
+.footerNav {
+  position: absolute;
+  bottom: 120px;
+  left: 20px;
+  right: 0;
+}
+
+.socials {
+  display: flex;
+}
+
+.socialItem:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.socialLink {
+  font-size: 3rem;
+  color: #000;
+}
+
+.copyright {
+  font-size: 1.8rem;
+}
+
+@media screen and (min-width: 992px) {
   .Navigation {
     display: block;
-    width: 20vw;
+    width: 25vw;
+  }
+
+  .logoLink {
+    font-size: 2rem;
+  }
+
+  .navLink {
+    font-size: 1.4rem;
   }
 }
