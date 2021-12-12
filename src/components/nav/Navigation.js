@@ -28,6 +28,38 @@ const Navigation = () => (
           <a href="/" className={styles.navLink}>LOG OUT</a>
         </li>
       </ul>
+      <div className={styles.footerNav}>
+        <ul className={styles.socials}>
+          <li className={styles.socialItem}>
+            <a href="/#" className={styles.socialLink}>
+              <i className="bx bxl-facebook" />
+            </a>
+          </li>
+          <li className={styles.socialItem}>
+            <a href="/#" className={styles.socialLink}>
+              <i className="bx bxl-twitter" />
+            </a>
+          </li>
+          <li className={styles.socialItem}>
+            <a href="/#" className={styles.socialLink}>
+              <i className="bx bxl-pinterest-alt" />
+            </a>
+          </li>
+          <li className={styles.socialItem}>
+            <a href="/#" className={styles.socialLink}>
+              <i className="bx bxl-google-plus" />
+            </a>
+          </li>
+          <li className={styles.socialItem}>
+            <a href="/#" className={styles.socialLink}>
+              <i className="bx bxl-vimeo" />
+            </a>
+          </li>
+        </ul>
+        <p className={styles.copyright}>
+          &copy; 2021 Microverse
+        </p>
+      </div>
     </nav>
   </div>
 );
