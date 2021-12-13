@@ -12,6 +12,7 @@ const LogoutModal = ({ isOpen, onClose }) => {
   const { isLoading } = useSelector(authSelector);
   const onConfirm = () => {
     dispatch(logout());
+    onClose();
   };
   return (
     ReactDOM.createPortal(

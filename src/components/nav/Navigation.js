@@ -18,8 +18,8 @@ const Navigation = () => {
   };
 
   const onClose = () => {
+    document.body.removeAttribute('style');
     setOpen(false);
-    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -54,7 +54,7 @@ const Navigation = () => {
               <NavLink to="/appointment/all" className={styles.navLink}>MY APPOINTMENTS</NavLink>
             </li>
             <li className={styles.navItem}>
-              <a href="/" className={styles.navLink}>DELETE A DOCTOR</a>
+              <Link to="/doctor/all" className={styles.navLink}>DELETE A DOCTOR</Link>
             </li>
             <li className={styles.navItem}>
               <button type="button" className={styles.logOutBtn} onClick={onOpen}>LOG OUT</button>
