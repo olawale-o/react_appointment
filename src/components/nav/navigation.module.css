@@ -69,6 +69,19 @@
   font-weight: bolder;
 }
 
+.logOutBtn {
+  background: #003f14;
+  outline: none;
+  border: none;
+  width: calc(100% - 20px);
+  display: block;
+  padding: 1.2rem;
+  margin-left: 20px;
+  text-align: left;
+  color: #fff;
+  cursor: pointer;
+}
+
 .navLink:hover {
   background: #97bf0f;
   color: #fff;

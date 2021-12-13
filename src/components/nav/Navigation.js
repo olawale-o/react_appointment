@@ -1,13 +1,25 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './navigation.module.css';
+import LogoutModal from '../shared/LogoutModal';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const toggleMenu = isOpen ? styles.showNav : '';
   const toggleHeader = isOpen ? styles.showHeader : '';
   const toggleNav = () => {
     setIsOpen(!isOpen);
+  };
+
+  const onOpen = () => {
+    setOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const onClose = () => {
+    setOpen(false);
+    document.body.style.overflow = 'auto';
   };
 
   return (
@@ -45,7 +57,7 @@ const Navigation = () => {
               <a href="/" className={styles.navLink}>DELETE A DOCTOR</a>
             </li>
             <li className={styles.navItem}>
-              <a href="/" className={styles.navLink}>LOG OUT</a>
+              <button type="button" className={styles.logOutBtn} onClick={onOpen}>LOG OUT</button>
             </li>
           </ul>
           <div className={styles.footerNav}>
@@ -81,6 +93,7 @@ const Navigation = () => {
             </p>
           </div>
         </nav>
+        <LogoutModal isOpen={open} setOpen={setOpen} onClose={onClose} />
       </div>
     </>
   );
