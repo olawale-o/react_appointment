@@ -144,7 +144,7 @@ select {
   outline: none;
 }
 
-.loginBtn {
+.authBtn {
   background: #2f007b;
   border-color: #2f007b;
   border-radius: 10px;

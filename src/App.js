@@ -11,6 +11,7 @@ import NoMatch from './components/nomatch/NoMatch';
 import Detail from './components/doctor/Detail';
 import PrivateRoute from './components/routes/PrivateRoute';
 import PublicRoute from './components/routes/PublicRoute';
+import Register from './components/authentication/Register';
 
 const App = () => (
   <div className="App">
@@ -21,6 +22,17 @@ const App = () => (
           (
             <PublicRoute>
               <Login />
+            </PublicRoute>
+          )
+        }
+        exact
+      />
+      <Route
+        path="/register"
+        element={
+          (
+            <PublicRoute>
+              <Register />
             </PublicRoute>
           )
         }
