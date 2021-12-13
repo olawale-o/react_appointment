@@ -36,7 +36,7 @@ const AppointmentCard = ({ appointment }) => {
         </div>
         <span className="fs-6">
           <button onClick={() => onDelete(appointment.id)} type="button">
-            <i className="bx bxs-trash-alt" />
+            <i className="bx bx-x" />
           </button>
         </span>
       </div>
