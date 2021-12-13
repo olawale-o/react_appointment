@@ -10,11 +10,22 @@ import Booking from './components/booking/Booking';
 import NoMatch from './components/nomatch/NoMatch';
 import Detail from './components/doctor/Detail';
 import PrivateRoute from './components/routes/PrivateRoute';
+import PublicRoute from './components/routes/PublicRoute';
 
 const App = () => (
   <div className="App">
     <Routes>
-      <Route path="/login" element={<Login />} exact />
+      <Route
+        path="/login"
+        element={
+          (
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          )
+        }
+        exact
+      />
       <Route
         path="/"
         element={
