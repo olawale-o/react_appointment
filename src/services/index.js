@@ -47,3 +47,10 @@ export const getAppointmentsService = async () => {
 export const deleteAppointmentService = async (id) => {
   await remove(`${BASE_URI}/appointments/${id}`);
 };
+
+export const logoutService = async () => {
+  const token = getStorage('token');
+  const options = { token };
+  await remove(`${BASE_URI}/users/logout`, options);
+  setStorage('', 'token');
+};
