@@ -7,7 +7,7 @@ const AppointmentList = ({ appointments }) => {
     <AppointmentCard key={appointment.id} appointment={appointment} />
   ));
   return (
-    <div className="appointment__list">
+    <div className="table">
       {appointmentList}
     </div>
   );

@@ -7,7 +7,7 @@ const DoctorList = ({ doctors }) => {
     <DoctorItemCard key={doctor.id} doctor={doctor} />
   ));
   return (
-    <div className="appointment__list">
+    <div className="table">
       {doctorList}
     </div>
   );

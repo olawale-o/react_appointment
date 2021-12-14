@@ -190,29 +190,29 @@ select {
   }
 }
 
-.appointment__container {
+.table__container {
   background-color: #fff;
   width: 90%;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.appointment__info {
-  display: flex;
-  align-items: center;
-}
-
-.appointment__list {
+.table {
   margin-top: 4rem;
 }
 
-.appointment__item {
+.table__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.appointment__info img {
+.info {
+  display: flex;
+  align-items: center;
+}
+
+.info img {
   margin-right: 1.5rem;
 }
 

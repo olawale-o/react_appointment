@@ -11,8 +11,8 @@ const AppointmentCard = ({ appointment }) => {
   };
   return (
     <>
-      <div className="appointment__item">
-        <div className="appointment__info">
+      <div className="table__row">
+        <div className="info">
           <img
             src={`http://localhost:3000${appointment.picture}`}
             style={{
@@ -25,17 +25,21 @@ const AppointmentCard = ({ appointment }) => {
           />
           <span className="fs-3">{appointment.fullname}</span>
         </div>
-        <div className="appointment__city">
+        <div className="city">
           <span className="fs-3">{appointment.city}</span>
         </div>
-        <div className="appointment__specialty">
+        <div className="specialty">
           <span className="fs-3">{appointment.specialty}</span>
         </div>
-        <div className="appointment__date">
+        <div className="date">
           <span className="fs-3">{DateTime.fromISO(appointment.appointment_date).toFormat('yyyy-LL-dd')}</span>
         </div>
         <span className="fs-6">
-          <button onClick={() => onDelete(appointment.id)} type="button">
+          <button
+            onClick={() => onDelete(appointment.id)}
+            type="button"
+            className="btn"
+          >
             <i className="bx bx-x" />
           </button>
         </span>

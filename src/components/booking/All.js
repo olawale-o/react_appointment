@@ -13,7 +13,7 @@ const All = () => {
 
   return (
     <div className="Appointments" style={{ background: 'whitesmoke', minHeight: '700px', paddingTop: '10rem' }}>
-      <div className="appointment__container">
+      <div className="table__container">
         {loading && <div className="loading__indicator" />}
         { appointments.length > 0
           && (

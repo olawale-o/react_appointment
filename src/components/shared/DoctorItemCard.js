@@ -12,8 +12,8 @@ const DoctorItemCard = ({ doctor }) => {
   };
   return (
     <>
-      <div className="appointment__item">
-        <div className="appointment__info">
+      <div className="table__row">
+        <div className="info">
           <img
             src={`http://localhost:3000${doctor.picture}`}
             style={{
@@ -26,14 +26,19 @@ const DoctorItemCard = ({ doctor }) => {
           />
           <span className="fs-3">{doctor.fullname}</span>
         </div>
-        <div className="appointment__city">
+        <div className="city">
           <span className="fs-3">{doctor.city}</span>
         </div>
-        <div className="appointment__specialty">
+        <div className="specialty">
           <span className="fs-3">{doctor.specialty}</span>
         </div>
         <span className="fs-6">
-          <button onClick={() => onDelete(doctor.id)} type="button" disabled={doctor.user_id !== user.id}>
+          <button
+            onClick={() => onDelete(doctor.id)}
+            type="button"
+            disabled={doctor.user_id !== user.id}
+            className="btn"
+          >
             <i className="bx bx-trash-alt" />
           </button>
         </span>
