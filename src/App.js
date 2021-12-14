@@ -50,11 +50,12 @@ const App = () => (
         }
         exact
       >
-        <Route path="/" element={<List />} />
+        <Route index element={<List />} />
         <Route path="doctor/new" element={<NewDoctor />} />
         <Route path="doctor/:id" element={<Detail />} />
         <Route path="doctor/all" element={<AllDoctors />} />
         <Route path="appointment" element={<Booking />}>
+          <Route index element={<New />} />
           <Route path="new" element={<New />} />
           <Route path="all" element={<All />} />
         </Route>
