@@ -1,9 +1,14 @@
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Link } from 'react-router-dom';
 import styles from './navigation.module.css';
 import LogoutModal from '../shared/LogoutModal';
+import authSelector from '../../redux/auth/auth_selector';
+import { logout } from '../../redux/auth/auth_async_actions';
 
 const Navigation = () => {
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector(authSelector);
   const [isOpen, setIsOpen] = useState(false);
   const [open, setOpen] = useState(false);
   const toggleMenu = isOpen ? styles.showNav : '';
@@ -20,6 +25,11 @@ const Navigation = () => {
   const onClose = () => {
     document.body.removeAttribute('style');
     setOpen(false);
+  };
+
+  const onConfirm = () => {
+    dispatch(logout());
+    onClose();
   };
 
   return (
@@ -93,7 +103,13 @@ const Navigation = () => {
             </p>
           </div>
         </nav>
-        <LogoutModal isOpen={open} setOpen={setOpen} onClose={onClose} />
+        <LogoutModal
+          isOpen={open}
+          setOpen={setOpen}
+          onClose={onClose}
+          isLoading={isLoading}
+          onConfirm={onConfirm}
+        />
       </div>
     </>
   );

@@ -1,19 +1,15 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import PropType from 'prop-types';
-import authSelector from '../../redux/auth/auth_selector';
-import { logout } from '../../redux/auth/auth_async_actions';
 import styles from './LogoutModalStyle';
 
-const LogoutModal = ({ isOpen, onClose }) => {
+const LogoutModal = ({
+  isOpen,
+  onClose,
+  onConfirm,
+  isLoading,
+}) => {
   if (!isOpen) return null;
-  const dispatch = useDispatch();
-  const { isLoading } = useSelector(authSelector);
-  const onConfirm = () => {
-    dispatch(logout());
-    onClose();
-  };
   return (
     ReactDOM.createPortal(
       <div className="modal" style={styles.modal}>
@@ -39,4 +35,6 @@ export default LogoutModal;
 LogoutModal.propTypes = {
   isOpen: PropType.bool.isRequired,
   onClose: PropType.func.isRequired,
+  isLoading: PropType.bool.isRequired,
+  onConfirm: PropType.func.isRequired,
 };
