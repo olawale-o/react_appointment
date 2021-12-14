@@ -9,7 +9,21 @@ const CarouselSlider = ({ doctors }) => {
   const doctorList = doctors.map((doctor) => (<DoctorCard key={doctor.id} doctor={doctor} />));
   return (
     <div className="slider" style={{ width: '100%' }}>
-      <Slider slidesToShow={1} infinite={false}>{doctorList}</Slider>
+      <Slider
+        responsive={[
+          {
+            breakpoint: 480,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+            },
+          },
+        ]}
+        slidesToShow={2}
+        infinite={false}
+      >
+        {doctorList}
+      </Slider>
     </div>
   );
 };

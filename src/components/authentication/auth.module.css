@@ -33,3 +33,16 @@
   font-size: 1.8rem;
   letter-spacing: 0.5px;
 }
+
+.link {
+  font-size: 1.8rem;
+  color: #eee;
+  text-decoration: none;
+  margin-top: 1rem;
+  display: block;
+  text-align: center;
+}
+
+.link:hover {
+  text-decoration: underline;
+}

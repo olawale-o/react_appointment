@@ -1,20 +1,21 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
-import { DateTime } from 'luxon';
+import { useSelector, useDispatch } from 'react-redux';
 import PropType from 'prop-types';
-import { removeAppointment } from '../../redux/appointments/appointment_async_action';
+import authSelector from '../../redux/auth/auth_selector';
+import { deleteDoctor } from '../../redux/doctors/doctor_async_action';
 
-const AppointmentCard = ({ appointment }) => {
+const DoctorItemCard = ({ doctor }) => {
   const dispatch = useDispatch();
+  const { user } = useSelector(authSelector);
   const onDelete = (id) => {
-    dispatch(removeAppointment(id));
+    dispatch(deleteDoctor(id));
   };
   return (
     <>
       <div className="table__row">
         <div className="info">
           <img
-            src={`http://localhost:3000${appointment.picture}`}
+            src={`http://localhost:3000${doctor.picture}`}
             style={{
               width: '40px',
               height: '40px',
@@ -23,24 +24,22 @@ const AppointmentCard = ({ appointment }) => {
             }}
             alt="appointment"
           />
-          <span className="fs-3">{appointment.fullname}</span>
+          <span className="fs-3">{doctor.fullname}</span>
         </div>
         <div className="city">
-          <span className="fs-3">{appointment.city}</span>
+          <span className="fs-3">{doctor.city}</span>
         </div>
         <div className="specialty">
-          <span className="fs-3">{appointment.specialty}</span>
-        </div>
-        <div className="date">
-          <span className="fs-3">{DateTime.fromISO(appointment.appointment_date).toFormat('yyyy-LL-dd')}</span>
+          <span className="fs-3">{doctor.specialty}</span>
         </div>
         <span className="fs-6">
           <button
-            onClick={() => onDelete(appointment.id)}
+            onClick={() => onDelete(doctor.id)}
             type="button"
+            disabled={doctor.user_id !== user.id}
             className="btn"
           >
-            <i className="bx bx-x" />
+            <i className="bx bx-trash-alt" />
           </button>
         </span>
       </div>
@@ -49,15 +48,15 @@ const AppointmentCard = ({ appointment }) => {
   );
 };
 
-export default AppointmentCard;
+export default DoctorItemCard;
 
-AppointmentCard.propTypes = {
-  appointment: PropType.shape({
+DoctorItemCard.propTypes = {
+  doctor: PropType.shape({
     id: PropType.number,
     fullname: PropType.string,
     specialty: PropType.string,
     city: PropType.string,
-    appointment_date: PropType.string,
     picture: PropType.string,
+    user_id: PropType.number,
   }).isRequired,
 };

@@ -3,6 +3,7 @@ import {
   REQUEST_FAILURE,
   REQUEST_LOADING,
   SINGLE_DOCTOR,
+  DELETE_DOCTOR,
 } from './action_types';
 
 const initialState = {
@@ -22,6 +23,17 @@ const doctorReducer = (state = initialState, action) => {
       return { ...state, loading: true };
     case REQUEST_FAILURE:
       return { ...state, loading: false, error: action.payload };
+    case DELETE_DOCTOR: {
+      const { id, message } = action.payload;
+      const { doctors } = state;
+      const newDoctors = doctors.filter((doctor) => doctor.id !== id);
+      return {
+        ...state,
+        doctors: newDoctors,
+        message,
+        loading: false,
+      };
+    }
     default:
       return state;
   }
