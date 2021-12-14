@@ -28,8 +28,8 @@ export const getDoctor = (id) => (
   async function getDoctor(dispatch) {
     dispatch({ type: REQUEST_LOADING });
     try {
-      const response = await getDoctorService(id);
-      dispatch({ type: SINGLE_DOCTOR, payload: response.data });
+      const { data: { doctor } } = await getDoctorService(id);
+      dispatch({ type: SINGLE_DOCTOR, payload: doctor });
     } catch (error) {
       dispatch({ type: REQUEST_FAILURE, payload: error });
     }
