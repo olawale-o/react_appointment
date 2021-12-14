@@ -1,0 +1,17 @@
+.home {
+  min-height: 90vh;
+  width: 100%;
+  display: flex;
+}
+
+.child {
+  position: relative;
+  width: 100%;
+}
+
+@media screen and (min-width: 992px) {
+  .child {
+    margin-left: auto;
+    width: 75vw;
+  }
+}
