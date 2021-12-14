@@ -33,10 +33,7 @@ export const addDoctorService = async (doctor) => {
 };
 
 export const deleteDoctorService = async (id) => {
-  const token = getStorage('token');
-  const options = { token };
-  const response = await remove(`${BASE_URI}/doctors/${id}`, options);
-  return response.json();
+  await remove(`${BASE_URI}/doctors/${id}`);
 };
 
 export const createAppointmentService = async (appointment) => {

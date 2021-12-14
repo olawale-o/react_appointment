@@ -1,13 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import PropType from 'prop-types';
 import authSelector from '../../redux/auth/auth_selector';
+import { deleteDoctor } from '../../redux/doctors/doctor_async_action';
 
 const DoctorItemCard = ({ doctor }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { user } = useSelector(authSelector);
   const onDelete = (id) => {
-    console.log(id);
+    dispatch(deleteDoctor(id));
   };
   return (
     <>
@@ -32,7 +33,7 @@ const DoctorItemCard = ({ doctor }) => {
           <span className="fs-3">{doctor.specialty}</span>
         </div>
         <span className="fs-6">
-          <button onClick={() => onDelete(doctor.id)} type="button" disabled={doctor.user_id === user.id}>
+          <button onClick={() => onDelete(doctor.id)} type="button" disabled={doctor.user_id !== user.id}>
             <i className="bx bx-trash-alt" />
           </button>
         </span>

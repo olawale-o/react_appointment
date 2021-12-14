@@ -2,7 +2,9 @@ import {
   getDoctorsService,
   getDoctorService,
   addDoctorService,
+  deleteDoctorService,
 } from '../../services';
+import { doctorDelete } from './action_creators';
 import {
   ALL_DOCTORS,
   REQUEST_FAILURE,
@@ -41,6 +43,18 @@ export const addDoctor = (newDoctor, cb) => (
       const { data: { doctor } } = await addDoctorService(newDoctor);
       dispatch({ type: SINGLE_DOCTOR, payload: doctor });
       cb(doctor.id);
+    } catch (error) {
+      dispatch({ type: REQUEST_FAILURE, payload: error });
+    }
+  }
+);
+
+export const deleteDoctor = (id) => (
+  async function deleteDoctor(dispatch) {
+    dispatch({ type: REQUEST_LOADING });
+    try {
+      await deleteDoctorService(id);
+      dispatch(doctorDelete({ id, message: 'Doctor deleted' }));
     } catch (error) {
       dispatch({ type: REQUEST_FAILURE, payload: error });
     }
