@@ -15,7 +15,7 @@ const Register = () => {
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/', { replace: true });
     }
   }, [user]);
   const handleFormSubmit = (e) => {

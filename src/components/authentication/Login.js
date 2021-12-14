@@ -13,7 +13,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   useEffect(() => {
     if (user) {
-      navigate('/');
+      navigate('/', { replace: true });
     }
   }, [user]);
   const handleFormSubmit = (e) => {
