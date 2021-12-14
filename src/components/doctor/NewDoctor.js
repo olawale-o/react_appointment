@@ -18,12 +18,12 @@ const NewDoctor = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(description);
     const formData = new FormData();
     formData.append('doctor[fullname]', fullname);
     formData.append('doctor[city]', city);
     formData.append('doctor[specialty]', specialty);
     formData.append('doctor[picture]', picture);
+    formData.append('doctor[description]', description);
     dispatch(addDoctor(formData, callback));
   };
 
