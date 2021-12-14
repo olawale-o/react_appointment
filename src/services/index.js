@@ -1,7 +1,7 @@
 import { post, get, remove } from '../api';
 import { getStorage, setStorage } from '../scripts/storage';
 
-const BASE_URI = 'http://localhost:3000/v1';
+const BASE_URI = process.env.NODE_ENV === 'development' ? 'http://localhost:3000/v1' : 'https://dry-ravine-88800.herokuapp.com/v1';
 
 export const loginService = async (credentials) => {
   const response = await post(`${BASE_URI}/users/login`, { credentials });
