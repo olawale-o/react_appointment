@@ -1,37 +1,37 @@
-import { AUTH_FAIL, AUTH_LOADING, AUTH_SUCCESS } from './action_types';
+import { authError, authLoading, authSuccess } from './action_creators';
 import { loginService, logoutService, registerService } from '../../services';
 
 export const login = (credentials) => (
   async function login(dispatch) {
-    dispatch({ type: AUTH_LOADING });
+    dispatch(authLoading());
     try {
       const response = await loginService(credentials);
-      dispatch({ type: AUTH_SUCCESS, payload: response });
+      dispatch(authSuccess(response));
     } catch (error) {
-      dispatch({ type: AUTH_FAIL, payload: error.message });
+      dispatch(authError(error.message));
     }
   }
 );
 export const register = (credentials) => (
   async function register(dispatch) {
-    dispatch({ type: AUTH_LOADING });
+    dispatch(authLoading());
     try {
       const response = await registerService(credentials);
-      dispatch({ type: AUTH_SUCCESS, payload: response });
+      dispatch(authSuccess(response));
     } catch (error) {
-      dispatch({ type: AUTH_FAIL, payload: error.message });
+      dispatch(authError(error.message));
     }
   }
 );
 
 export const logout = () => (
   async function logout(dispatch) {
-    dispatch({ type: AUTH_LOADING });
+    dispatch(authLoading());
     try {
       await logoutService();
-      dispatch({ type: AUTH_SUCCESS, payload: null });
+      dispatch(authSuccess(null));
     } catch (error) {
-      dispatch({ type: AUTH_FAIL, payload: error.message });
+      dispatch(authError(error.message));
     }
   }
 );
