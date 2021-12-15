@@ -2,6 +2,10 @@
 
 > A front end application for booking an appointment with a doctor
 
+ScreenShot
+
+![screenshot](https://github.com/olawale-o/react_appointment/blob/booking/screenshot.png?raw=true")
+
 # Built With
 - CSS
 - React JS

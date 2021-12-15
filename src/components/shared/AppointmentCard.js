@@ -26,12 +26,15 @@ const AppointmentCard = ({ appointment }) => {
           <span className="fs-3">{appointment.fullname}</span>
         </div>
         <div className="city">
+          <span className="fs-3 bold xs">City: </span>
           <span className="fs-3">{appointment.city}</span>
         </div>
         <div className="specialty">
+          <span className="fs-3 bold xs">Specialty: </span>
           <span className="fs-3">{appointment.specialty}</span>
         </div>
         <div className="date">
+          <span className="fs-3 bold xs">Appointment Date: </span>
           <span className="fs-3">{DateTime.fromISO(appointment.appointment_date).toFormat('yyyy-LL-dd')}</span>
         </div>
         <span className="fs-6">
