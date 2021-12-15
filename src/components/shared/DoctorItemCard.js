@@ -27,9 +27,11 @@ const DoctorItemCard = ({ doctor }) => {
           <span className="fs-3">{doctor.fullname}</span>
         </div>
         <div className="city">
+          <span className="fs-3 bold xs">City: </span>
           <span className="fs-3">{doctor.city}</span>
         </div>
         <div className="specialty">
+          <span className="fs-3 bold xs">Specialty: </span>
           <span className="fs-3">{doctor.specialty}</span>
         </div>
         <span className="fs-6">
