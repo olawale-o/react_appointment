@@ -10,11 +10,14 @@ const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const { doctor, loading } = useSelector(doctorSelector);
+
   useEffect(() => {
-    if (!doctor) {
+    if (doctor.id !== Number(id)) {
       dispatch(getDoctor(id));
     }
-  }, [doctor, id]);
+  }, [id]);
+
+  if (!doctor) return null;
 
   return (
     <div className="Details" style={{ paddingTop: '6rem' }}>
