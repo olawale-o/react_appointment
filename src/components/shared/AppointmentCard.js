@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { DateTime } from 'luxon';
 import PropType from 'prop-types';
 import { removeAppointment } from '../../redux/appointments/appointment_async_action';
+import BASE_URI from '../../constants/url';
 
 const AppointmentCard = ({ appointment }) => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const AppointmentCard = ({ appointment }) => {
       <div className="table__row">
         <div className="info">
           <img
-            src={`http://localhost:3000${appointment.picture}`}
+            src={`${BASE_URI}${appointment.picture}`}
             style={{
               width: '40px',
               height: '40px',

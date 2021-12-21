@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { getDoctor } from '../../redux/doctors/doctor_async_action';
 import doctorSelector from '../../redux/doctors/doctor_selector';
+import BASE_URI from '../../constants/url';
 import './Detail.css';
 
 const Detail = () => {
@@ -25,7 +26,7 @@ const Detail = () => {
               <i className="bx bx-arrow-back" />
             </Link>
             <div className="large__picture">
-              <img src={`http://localhost:3000${doctor.picture}`} alt="doctor" />
+              <img src={`${BASE_URI}${doctor.picture}`} alt="doctor" />
             </div>
             <div className="details__info">
               <h2 className="detail__info-name">{`Dr. ${doctor.fullname}`}</h2>

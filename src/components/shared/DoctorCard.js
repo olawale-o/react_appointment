@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import PropType from 'prop-types';
 import style from './DoctorCard.module.css';
+import BASE_URI from '../../constants/url';
 
 const DoctorCard = ({ doctor }) => (
   <div className={style.card}>
     <div className={style.image}>
-      <img src={`http://localhost:3000${doctor.picture}`} alt="doctor" />
+      <img src={`${BASE_URI}${doctor.picture}`} alt="doctor" />
     </div>
     <h6 className={style.cardName}>{`Dr. ${doctor.fullname}`}</h6>
     <p className={style.cardDescription}>{doctor.specialty}</p>
