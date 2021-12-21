@@ -33,11 +33,11 @@ const Detail = () => {
             </div>
             <div className="details__info">
               <h2 className="detail__info-name">{`Dr. ${doctor.fullname}`}</h2>
-              <div className="specialty">
+              <div className="specialty__div">
                 <p className="speciality__banner">Specialty</p>
                 <h6 className="specialty__title">{doctor.specialty}</h6>
               </div>
-              <div className="city">
+              <div className="city__div">
                 <p className="city__banner">City</p>
                 <h6 className="city__title">{doctor.city}</h6>
               </div>
