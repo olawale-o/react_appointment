@@ -10,13 +10,15 @@ import {
   doctorDelete,
   singleDoctor,
 } from './action_creators';
+import normalizedDoctors from '../schema';
 
 export const getDoctors = () => (
   async function getDoctors(dispatch) {
     dispatch(loading());
     try {
       const response = await getDoctorsService();
-      dispatch(allDoctors(response.data));
+      const payload = normalizedDoctors(response.data);
+      dispatch(allDoctors(payload));
     } catch (error) {
       dispatch(error(error.message));
     }
