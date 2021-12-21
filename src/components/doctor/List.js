@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDoctors } from '../../redux/doctors/doctor_async_action';
-import doctorSelector from '../../redux/doctors/doctor_selector';
+import { selectDoctors, selectLoading } from '../../redux/doctors/doctor_selector';
 import CarouselSlider from '../shared/CarouselSlider';
 
 const List = () => {
   const dispatch = useDispatch();
-  const { doctors, loading } = useSelector(doctorSelector);
+  const allDoctorIds = useSelector(selectDoctors);
+  const loading = useSelector(selectLoading);
   useEffect(() => {
     dispatch(getDoctors());
   }, []);
@@ -21,7 +22,7 @@ const List = () => {
               <h1 className="heading1">OUR RECENT DOCTORS</h1>
               <h5 className="heading5">Pick a Doctor for an Appointment!</h5>
             </div>
-            <CarouselSlider doctors={doctors} />
+            <CarouselSlider doctors={allDoctorIds} />
           </>
         )}
     </div>
