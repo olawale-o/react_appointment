@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PropType from 'prop-types';
 import authSelector from '../../redux/auth/auth_selector';
 import { deleteDoctor } from '../../redux/doctors/doctor_async_action';
+import BASE_URI from '../../constants/url';
 
 const DoctorItemCard = ({ doctor }) => {
   const dispatch = useDispatch();
@@ -15,7 +16,7 @@ const DoctorItemCard = ({ doctor }) => {
       <div className="table__row">
         <div className="info">
           <img
-            src={`http://localhost:3000${doctor.picture}`}
+            src={`${BASE_URI}${doctor.picture}`}
             style={{
               width: '40px',
               height: '40px',
