@@ -2,20 +2,21 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { getDoctor } from '../../redux/doctors/doctor_async_action';
-import doctorSelector from '../../redux/doctors/doctor_selector';
+import { selectLoading, selectDoctorById } from '../../redux/doctors/doctor_selector';
 import BASE_URI from '../../constants/url';
 import './Detail.css';
 
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { doctor, loading } = useSelector(doctorSelector);
+  const loading = useSelector(selectLoading);
+  const doctor = useSelector(selectDoctorById(id));
 
   useEffect(() => {
-    if (doctor.id !== Number(id)) {
+    if (!doctor) {
       dispatch(getDoctor(id));
     }
-  }, [id]);
+  }, [doctor, id]);
 
   if (!doctor) return null;
 

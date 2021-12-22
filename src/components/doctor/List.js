@@ -14,9 +14,9 @@ const List = () => {
 
   return (
     <div className="doctor__list" style={{ overflowX: 'hidden', paddingTop: '6rem' }}>
-      {loading
-        ? <div className="loading__indicator" />
-        : (
+      {loading && <div className="loading__indicator" />}
+      {allDoctorIds.length > 0
+        && (
           <>
             <div className="home__header">
               <h1 className="heading1">OUR RECENT DOCTORS</h1>
@@ -25,6 +25,7 @@ const List = () => {
             <CarouselSlider doctors={allDoctorIds} />
           </>
         )}
+      { allDoctorIds.length === 0 && (<div style={{ fontSize: '3rem', textAlign: 'center' }}>No doctor on the list</div>) }
     </div>
   );
 };

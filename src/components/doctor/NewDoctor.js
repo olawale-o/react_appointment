@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDoctor } from '../../redux/doctors/doctor_async_action';
-import doctorSelector from '../../redux/doctors/doctor_selector';
+import { selectLoading } from '../../redux/doctors/doctor_selector';
 
 const NewDoctor = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector(doctorSelector);
+  const loading = useSelector(selectLoading);
   const [fullname, setFullName] = useState('');
   const [city, setCity] = useState();
   const [specialty, setSpecialty] = useState('');
