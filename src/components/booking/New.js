@@ -1,15 +1,19 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import doctorsSelector from '../../redux/doctors/doctor_selector';
+import { selectDoctors, selectDoctorById } from '../../redux/doctors/doctor_selector';
 import { createAppointment } from '../../redux/appointments/appointment_async_action';
-import appointmentSelector from '../../redux/appointments/appointment_selector';
+import {
+  selectAppointmentsLoading,
+  selectAppointmentsMessage,
+} from '../../redux/appointments/appointment_selector';
 
 const New = () => {
   const dispatch = useDispatch();
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
-  const { doctors } = useSelector(doctorsSelector);
-  const { message, loading } = useSelector(appointmentSelector);
+  const doctors = useSelector(selectDoctors);
+  const message = useSelector(selectAppointmentsMessage);
+  const loading = useSelector(selectAppointmentsLoading);
   const handleSubmit = (e) => {
     e.preventDefault();
     const credentials = {
@@ -21,9 +25,10 @@ const New = () => {
     dispatch(createAppointment(credentials));
   };
 
-  const doctorOptions = doctors.map((doctor) => (
-    <option key={doctor.id} value={doctor.id}>{doctor.fullname}</option>
-  ));
+  const doctorOptions = doctors.map((doctorId) => {
+    const doctor = useSelector(selectDoctorById(doctorId));
+    return <option key={doctor.id} value={doctor.id}>{doctor.fullname}</option>;
+  });
 
   return (
     <div className="booking__new">

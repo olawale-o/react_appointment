@@ -1,12 +1,13 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import appointmentSelector from '../../redux/appointments/appointment_selector';
+import { selectAppointments, selectAppointmentsLoading } from '../../redux/appointments/appointment_selector';
 import { getAppointments } from '../../redux/appointments/appointment_async_action';
 import AppointmentList from '../shared/AppointmentList';
 
 const All = () => {
   const dispatch = useDispatch();
-  const { appointments, loading } = useSelector(appointmentSelector);
+  const appointments = useSelector(selectAppointments);
+  const loading = useSelector(selectAppointmentsLoading);
   useEffect(() => {
     dispatch(getAppointments());
   }, []);
