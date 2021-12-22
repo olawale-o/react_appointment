@@ -11,7 +11,8 @@ import {
   singleDoctor,
   onError,
 } from './action_creators';
-import normalizedDoctors from '../schema';
+
+import { normalizedDoctors } from '../schema';
 
 export const getDoctors = () => (
   async function getDoctors(dispatch) {
