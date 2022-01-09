@@ -11,6 +11,7 @@ const initialState = {
   doctorById: null,
   loading: false,
   error: null,
+  message: null,
 };
 
 const doctorReducer = (state = initialState, action) => {
@@ -29,6 +30,8 @@ const doctorReducer = (state = initialState, action) => {
         doctorById: { ...state.doctorById, [doctor.id]: doctor },
         allDoctorIds: state.allDoctorIds.concat([doctor.id]),
         loading: false,
+        message: null,
+        error: null,
       };
     }
     case REQUEST_LOADING:
@@ -44,6 +47,7 @@ const doctorReducer = (state = initialState, action) => {
         doctorById,
         message,
         loading: false,
+        error: null,
       };
     }
     default:
