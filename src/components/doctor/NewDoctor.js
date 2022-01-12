@@ -75,6 +75,7 @@ const NewDoctor = () => {
               type="file"
               className="input"
               required
+              accept="image/png, image/jpeg"
               onChange={(e) => setPicture(e.target.files[0])}
             />
           </div>
