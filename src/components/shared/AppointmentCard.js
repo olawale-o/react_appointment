@@ -1,12 +1,14 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { DateTime } from 'luxon';
 import PropType from 'prop-types';
 import { removeAppointment } from '../../redux/appointments/appointment_async_action';
+import { selectAppointmentsById } from '../../redux/appointments/appointment_selector';
 import BASE_URI from '../../constants/url';
 
-const AppointmentCard = ({ appointment }) => {
+const AppointmentCard = ({ appointmentId }) => {
   const dispatch = useDispatch();
+  const appointment = useSelector(selectAppointmentsById(appointmentId));
   const onDelete = (id) => {
     dispatch(removeAppointment(id));
   };
@@ -56,12 +58,5 @@ const AppointmentCard = ({ appointment }) => {
 export default AppointmentCard;
 
 AppointmentCard.propTypes = {
-  appointment: PropType.shape({
-    id: PropType.number,
-    fullname: PropType.string,
-    specialty: PropType.string,
-    city: PropType.string,
-    appointment_date: PropType.string,
-    picture: PropType.string,
-  }).isRequired,
+  appointmentId: PropType.number.isRequired,
 };

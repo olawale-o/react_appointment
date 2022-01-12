@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux';
-import doctorSelector from '../../redux/doctors/doctor_selector';
+import { selectDoctors, selectLoading } from '../../redux/doctors/doctor_selector';
 import DoctorList from '../shared/DoctorList';
 
 const AllDoctors = () => {
-  const { doctors, loading } = useSelector(doctorSelector);
+  const doctors = useSelector(selectDoctors);
+  const loading = useSelector(selectLoading);
   return (
     <div className="Appointments" style={{ background: 'whitesmoke', minHeight: '700px', paddingTop: '10rem' }}>
       <div className="table__container">
