@@ -6,15 +6,16 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunkMiddleWare from 'redux-thunk';
 import authReducer from './src/redux/auth';
+import doctorReducer from './src/redux/doctors';
 
 const middlewares = [thunkMiddleWare];
 const middlewareEnhancers = applyMiddleware(...middlewares);
 
 const reducer = combineReducers({
   auth: authReducer,
+  doctors: doctorReducer,
 });
 const store = createStore(reducer, middlewareEnhancers);
-
 const Wrapper = ({ children }) => (
   <BrowserRouter>
     <Provider store={store}>{children}</Provider>
@@ -28,4 +29,4 @@ Wrapper.propTypes = {
 const render = (ui, options) => rtlRender(ui, { wrapper: Wrapper, ...options });
 
 export * from '@testing-library/react';
-export { render };
+export { render, store };
