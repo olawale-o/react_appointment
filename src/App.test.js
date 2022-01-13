@@ -1,5 +1,5 @@
-import { render, screen, store } from '../test-utils';
 import userEvent from '@testing-library/user-event';
+import { render, screen, store } from '../test-utils';
 import App from './App';
 
 describe('App without authourization and authentication', () => {
@@ -15,7 +15,7 @@ describe('App without authourization and authentication', () => {
     expect(screen.getByPlaceholderText('Password')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Confirm Password')).toBeInTheDocument();
   });
-  
+
   test('it should render register page and navigate to login page', () => {
     render(<App />);
     expect(screen.getByRole('link')).toHaveAttribute('href', '/login');
@@ -28,7 +28,7 @@ describe('App without authourization and authentication', () => {
 
 describe('App with authourization and authentication', () => {
   test('it should render home page', () => {
-    store.dispatch({type: 'auth/success', payload: {user: {id: 1, name: 'test', email: 'test@test.com'}}});
+    store.dispatch({ type: 'auth/success', payload: { user: { id: 1, name: 'test', email: 'test@test.com' } } });
     render(<App />);
   });
 });
