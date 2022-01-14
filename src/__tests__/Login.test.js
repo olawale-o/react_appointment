@@ -4,16 +4,6 @@ import App from '../App';
 
 jest.mock('../services');
 
-test('Login form renders correctly', () => {
-  render(<App />);
-  const emailInput = screen.getByPlaceholderText('Email');
-  const passwordInput = screen.getByPlaceholderText('Password');
-  const loginButton = screen.getByText('Login');
-  expect(emailInput).toBeInTheDocument();
-  expect(passwordInput).toBeInTheDocument();
-  expect(loginButton).toBeInTheDocument();
-});
-
 test('Login form submits correctly', async () => {
   render(<App />);
   const emailInput = screen.getByPlaceholderText('Email');
