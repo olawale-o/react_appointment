@@ -1,10 +1,6 @@
-/* eslint-disable */
+export const loginService = async () => Promise.resolve({ id: 1, email: 'test@test.com', token: 'token' });
 
-export const loginService = async (_credentials) => Promise.resolve({ id: 1, email: 'test@test.com', token: 'token' });
-
-export const registerService = async (_credentials) => Promise.resolve({ id: 1, email: 'test@test.com', token: 'token' });
-
-/* eslint-enable */
+export const registerService = async () => Promise.resolve({ id: 1, email: 'test@test.com', token: 'token' });
 
 export const getDoctorsService = async () => Promise.resolve({
   data: {
