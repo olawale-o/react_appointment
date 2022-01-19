@@ -10,6 +10,7 @@ export const getDoctorsService = async () => Promise.resolve({
         fullname: 'John Doe',
         picture: 'https://placeimg.com/64/64/people',
         specialty: 'Pediatrics',
+        city: 'New York',
         user_id: 1,
       },
     ],
