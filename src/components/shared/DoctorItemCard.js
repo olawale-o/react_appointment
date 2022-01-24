@@ -2,20 +2,23 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropType from 'prop-types';
 import authSelector from '../../redux/auth/auth_selector';
+import { selectDoctorById } from '../../redux/doctors/doctor_selector';
 import { deleteDoctor } from '../../redux/doctors/doctor_async_action';
+import BASE_URI from '../../constants/url';
 
-const DoctorItemCard = ({ doctor }) => {
+const DoctorItemCard = ({ doctorId }) => {
   const dispatch = useDispatch();
   const { user } = useSelector(authSelector);
   const onDelete = (id) => {
     dispatch(deleteDoctor(id));
   };
+  const doctor = useSelector(selectDoctorById(String(doctorId)));
   return (
     <>
       <div className="table__row">
         <div className="info">
           <img
-            src={`http://localhost:3000${doctor.picture}`}
+            src={`${BASE_URI}${doctor.picture}`}
             style={{
               width: '40px',
               height: '40px',
@@ -53,12 +56,5 @@ const DoctorItemCard = ({ doctor }) => {
 export default DoctorItemCard;
 
 DoctorItemCard.propTypes = {
-  doctor: PropType.shape({
-    id: PropType.number,
-    fullname: PropType.string,
-    specialty: PropType.string,
-    city: PropType.string,
-    picture: PropType.string,
-    user_id: PropType.number,
-  }).isRequired,
+  doctorId: PropType.number.isRequired,
 };

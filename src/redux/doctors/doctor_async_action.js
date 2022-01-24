@@ -9,16 +9,20 @@ import {
   allDoctors,
   doctorDelete,
   singleDoctor,
+  onError,
 } from './action_creators';
+
+import { normalizedDoctors } from '../schema';
 
 export const getDoctors = () => (
   async function getDoctors(dispatch) {
     dispatch(loading());
     try {
       const response = await getDoctorsService();
-      dispatch(allDoctors(response.data));
+      const payload = normalizedDoctors(response.data);
+      dispatch(allDoctors(payload));
     } catch (error) {
-      dispatch(error(error.message));
+      dispatch(onError(error.message));
     }
   }
 );
@@ -30,7 +34,7 @@ export const getDoctor = (id) => (
       const { data: { doctor } } = await getDoctorService(id);
       dispatch(singleDoctor(doctor));
     } catch (error) {
-      dispatch(error(error.message));
+      dispatch(onError(error.message));
     }
   }
 );
@@ -43,7 +47,7 @@ export const addDoctor = (newDoctor, cb) => (
       dispatch(singleDoctor(doctor));
       cb(doctor.id);
     } catch (error) {
-      dispatch(error(error.message));
+      dispatch(onError(error.message));
     }
   }
 );
@@ -55,7 +59,7 @@ export const deleteDoctor = (id) => (
       await deleteDoctorService(id);
       dispatch(doctorDelete({ id, message: 'Doctor deleted' }));
     } catch (error) {
-      dispatch(error(error.message));
+      dispatch(onError(error.message));
     }
   }
 );
