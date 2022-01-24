@@ -21,6 +21,8 @@ const appointmentReducer = (state = initialState, action) => {
         allAppointmentIds: action.payload.allAppointmentIds,
         appointmentById: action.payload.appointmentById,
         loading: false,
+        error: null,
+        message: null,
       };
     case REQUEST_LOADING:
       return { ...state, loading: true };
@@ -37,6 +39,7 @@ const appointmentReducer = (state = initialState, action) => {
         appointmentById,
         message,
         loading: false,
+        error: null,
       };
     }
     default:

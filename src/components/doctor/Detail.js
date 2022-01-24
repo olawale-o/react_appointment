@@ -26,7 +26,7 @@ const Detail = () => {
         ? <div className="loadding__indicator" />
         : (
           <div className="details__container">
-            <Link to="/" className="back__btn">
+            <Link to="/" className="back__btn" data-testid="arrow-back">
               <i className="bx bx-arrow-back" />
             </Link>
             <div className="large__picture">
