@@ -2,47 +2,64 @@ import {
   getDoctorsService,
   getDoctorService,
   addDoctorService,
+  deleteDoctorService,
 } from '../../services';
 import {
-  ALL_DOCTORS,
-  REQUEST_FAILURE,
-  REQUEST_LOADING,
-  SINGLE_DOCTOR,
-} from './action_types';
+  loading,
+  allDoctors,
+  doctorDelete,
+  singleDoctor,
+  onError,
+} from './action_creators';
+
+import { normalizedDoctors } from '../schema';
 
 export const getDoctors = () => (
   async function getDoctors(dispatch) {
-    dispatch({ type: REQUEST_LOADING });
+    dispatch(loading());
     try {
       const response = await getDoctorsService();
-      dispatch({ type: ALL_DOCTORS, payload: response.data });
+      const payload = normalizedDoctors(response.data);
+      dispatch(allDoctors(payload));
     } catch (error) {
-      dispatch({ type: REQUEST_FAILURE, payload: error });
+      dispatch(onError(error.message));
     }
   }
 );
 
 export const getDoctor = (id) => (
   async function getDoctor(dispatch) {
-    dispatch({ type: REQUEST_LOADING });
+    dispatch(loading());
     try {
-      const response = await getDoctorService(id);
-      dispatch({ type: SINGLE_DOCTOR, payload: response.data });
+      const { data: { doctor } } = await getDoctorService(id);
+      dispatch(singleDoctor(doctor));
     } catch (error) {
-      dispatch({ type: REQUEST_FAILURE, payload: error });
+      dispatch(onError(error.message));
     }
   }
 );
 
 export const addDoctor = (newDoctor, cb) => (
   async function addDoctor(dispatch) {
-    dispatch({ type: REQUEST_LOADING });
+    dispatch(loading());
     try {
       const { data: { doctor } } = await addDoctorService(newDoctor);
-      dispatch({ type: SINGLE_DOCTOR, payload: doctor });
+      dispatch(singleDoctor(doctor));
       cb(doctor.id);
     } catch (error) {
-      dispatch({ type: REQUEST_FAILURE, payload: error });
+      dispatch(onError(error.message));
+    }
+  }
+);
+
+export const deleteDoctor = (id) => (
+  async function deleteDoctor(dispatch) {
+    dispatch(loading());
+    try {
+      await deleteDoctorService(id);
+      dispatch(doctorDelete({ id, message: 'Doctor deleted' }));
+    } catch (error) {
+      dispatch(onError(error.message));
     }
   }
 );

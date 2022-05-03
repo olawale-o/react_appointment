@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDoctor } from '../../redux/doctors/doctor_async_action';
-import doctorSelector from '../../redux/doctors/doctor_selector';
+import { selectLoading } from '../../redux/doctors/doctor_selector';
 
 const NewDoctor = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading } = useSelector(doctorSelector);
+  const loading = useSelector(selectLoading);
   const [fullname, setFullName] = useState('');
   const [city, setCity] = useState();
   const [specialty, setSpecialty] = useState('');
@@ -18,12 +18,12 @@ const NewDoctor = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(description);
     const formData = new FormData();
     formData.append('doctor[fullname]', fullname);
     formData.append('doctor[city]', city);
     formData.append('doctor[specialty]', specialty);
     formData.append('doctor[picture]', picture);
+    formData.append('doctor[description]', description);
     dispatch(addDoctor(formData, callback));
   };
 
@@ -75,6 +75,7 @@ const NewDoctor = () => {
               type="file"
               className="input"
               required
+              accept="image/png, image/jpeg"
               onChange={(e) => setPicture(e.target.files[0])}
             />
           </div>

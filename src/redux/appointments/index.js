@@ -7,7 +7,8 @@ import {
 } from './action_types';
 
 const initialState = {
-  appointments: [],
+  allAppointmentIds: [],
+  appointmentById: null,
   loading: false,
   error: null,
   message: null,
@@ -16,7 +17,13 @@ const initialState = {
 const appointmentReducer = (state = initialState, action) => {
   switch (action.type) {
     case ALL_APPOINTMENTS:
-      return { ...state, appointments: action.payload, loading: false };
+      return {
+        allAppointmentIds: action.payload.allAppointmentIds,
+        appointmentById: action.payload.appointmentById,
+        loading: false,
+        error: null,
+        message: null,
+      };
     case REQUEST_LOADING:
       return { ...state, loading: true };
     case REQUEST_FAILURE:
@@ -25,13 +32,14 @@ const appointmentReducer = (state = initialState, action) => {
       return { ...state, message: action.payload, loading: false };
     case APPOINTMENT_DELETE: {
       const { id, message } = action.payload;
-      const { appointments } = state;
-      const newAppointments = appointments.filter((appointment) => appointment.id !== id);
+      const { allAppointmentIds, appointmentById } = state;
+      delete appointmentById[id];
       return {
-        ...state,
-        appointments: newAppointments,
+        allAppointmentIds: allAppointmentIds.filter((appointmentId) => appointmentId !== id),
+        appointmentById,
         message,
         loading: false,
+        error: null,
       };
     }
     default:

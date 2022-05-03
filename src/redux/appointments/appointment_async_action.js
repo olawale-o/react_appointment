@@ -11,6 +11,8 @@ import {
   deleteAppointment,
 } from './action_creators';
 
+import { normalizedAppointments } from '../schema';
+
 export const createAppointment = (appointment) => (
   async function createAppointment(dispatch) {
     dispatch(loading());
@@ -27,8 +29,9 @@ export const getAppointments = () => (
   async function getAppointments(dispatch) {
     dispatch(loading());
     try {
-      const { data: { appointments } } = await getAppointmentsService();
-      dispatch(allAppointments(appointments));
+      const response = await getAppointmentsService();
+      const payload = normalizedAppointments(response.data);
+      dispatch(allAppointments(payload));
     } catch (error) {
       dispatch(failure(error.message));
     }

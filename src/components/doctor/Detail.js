@@ -2,18 +2,23 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { getDoctor } from '../../redux/doctors/doctor_async_action';
-import doctorSelector from '../../redux/doctors/doctor_selector';
+import { selectLoading, selectDoctorById } from '../../redux/doctors/doctor_selector';
+import BASE_URI from '../../constants/url';
 import './Detail.css';
 
 const Detail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
-  const { doctor, loading } = useSelector(doctorSelector);
+  const loading = useSelector(selectLoading);
+  const doctor = useSelector(selectDoctorById(id));
+
   useEffect(() => {
     if (!doctor) {
       dispatch(getDoctor(id));
     }
   }, [doctor, id]);
+
+  if (!doctor) return null;
 
   return (
     <div className="Details" style={{ paddingTop: '6rem' }}>
@@ -21,19 +26,19 @@ const Detail = () => {
         ? <div className="loadding__indicator" />
         : (
           <div className="details__container">
-            <Link to="/" className="back__btn">
+            <Link to="/" className="back__btn" data-testid="arrow-back">
               <i className="bx bx-arrow-back" />
             </Link>
             <div className="large__picture">
-              <img src={`http://localhost:3000${doctor.picture}`} alt="doctor" />
+              <img src={`${BASE_URI}${doctor.picture}`} alt="doctor" />
             </div>
             <div className="details__info">
               <h2 className="detail__info-name">{`Dr. ${doctor.fullname}`}</h2>
-              <div className="specialty">
+              <div className="specialty__div">
                 <p className="speciality__banner">Specialty</p>
                 <h6 className="specialty__title">{doctor.specialty}</h6>
               </div>
-              <div className="city">
+              <div className="city__div">
                 <p className="city__banner">City</p>
                 <h6 className="city__title">{doctor.city}</h6>
               </div>

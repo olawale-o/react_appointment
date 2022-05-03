@@ -28,9 +28,6 @@ a {
 }
 
 img {
-  /* max-width: 100%;
-  object-fit: cover;
-  border-radius: inherit; */
   border-radius: 50%;
 }
 
@@ -69,9 +66,19 @@ select {
 .slider .slick-arrow.slick-next {
   background: #97bf0f;
   z-index: 2;
-  height: 70px;
-  width: 100px;
-  border-radius: 100px;
+  width: 70px;
+  height: 40px;
+  border-radius: 70px;
+}
+
+.slider .slick-arrow.slick-prev {
+  text-align: right;
+  padding-right: 1rem;
+}
+
+.slider .slick-arrow.slick-arrow.slick-next {
+  text-align: left;
+  padding-left: 1rem;
 }
 
 .field {
@@ -137,7 +144,7 @@ select {
   outline: none;
 }
 
-.loginBtn {
+.authBtn {
   background: #2f007b;
   border-color: #2f007b;
   border-radius: 10px;
@@ -183,30 +190,31 @@ select {
   }
 }
 
-.appointment__container {
+.table__container {
   background-color: #fff;
   width: 90%;
   margin: 0 auto;
   padding: 2rem;
 }
 
-.appointment__info {
-  display: flex;
-  align-items: center;
-}
-
-.appointment__list {
+.table {
   margin-top: 4rem;
 }
 
-.appointment__item {
+.info {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  width: 100%;
 }
 
-.appointment__info img {
+.info img {
   margin-right: 1.5rem;
+}
+
+.bold {
+  font-weight: 400;
 }
 
 .fs-3 {
@@ -219,6 +227,22 @@ select {
   font-weight: 300;
 }
 
+.city {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.specialty {
+  width: 100%;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 span i {
   cursor: pointer;
 }
@@ -228,4 +252,31 @@ span i {
   height: 1px;
   background: #eee;
   margin: 2rem 0;
+}
+
+@media screen and (min-width: 768px) {
+  .table__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+
+  .xs {
+    display: none;
+    visibility: hidden;
+  }
+
+  .info {
+    justify-content: start;
+    width: 30%;
+  }
+
+  .city {
+    width: 20%;
+  }
+
+  .specialty {
+    width: 25%;
+  }
 }
