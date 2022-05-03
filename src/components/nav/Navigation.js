@@ -22,7 +22,7 @@ const Navigation = () => (
           <NavLink to="/booking/all" className={styles.navLink}>MY BOOKINGS</NavLink>
         </li>
         <li className={styles.navItem}>
-          <a href="/" className={styles.navLink}>DELETE A DOCTOR</a>
+          <NavLink to="/" className={styles.navLink}>DELETE A DOCTOR</NavLink>
         </li>
         <li className={styles.navItem}>
           <a href="/" className={styles.navLink}>LOG OUT</a>
