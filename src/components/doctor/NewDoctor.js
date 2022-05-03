@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDoctor } from '../../redux/doctors/doctor_async_action';
 import doctorSelector from '../../redux/doctors/doctor_selector';
