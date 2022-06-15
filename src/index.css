@@ -120,12 +120,12 @@ select {
 }
 
 .form {
-  width: 50%;
+  width: 85%;
   margin: 0 auto;
 }
 
 .form form {
-  width: 80%;
+  width: 100%;
 }
 
 .actions {
@@ -279,4 +279,14 @@ span i {
   .specialty {
     width: 25%;
   }
+
+  .form {
+    width: 50%;
+    margin: 0 auto;
+  }
+  
+  .form form {
+    width: 100%;
+  }
+  
 }
