@@ -17,7 +17,7 @@ const AppointmentCard = ({ appointmentId }) => {
       <div className="table__row">
         <div className="info">
           <img
-            src={`${BASE_URI}${appointment.picture}`}
+            src={`${BASE_URI}${appointment.doctor.picture}`}
             style={{
               width: '40px',
               height: '40px',
@@ -26,15 +26,15 @@ const AppointmentCard = ({ appointmentId }) => {
             }}
             alt="appointment"
           />
-          <span className="fs-3">{appointment.fullname}</span>
+          <span className="fs-3">{appointment.doctor.fullname}</span>
         </div>
         <div className="city">
           <span className="fs-3 bold xs">City: </span>
-          <span className="fs-3">{appointment.city}</span>
+          <span className="fs-3">{appointment.doctor.city}</span>
         </div>
         <div className="specialty">
           <span className="fs-3 bold xs">Specialty: </span>
-          <span className="fs-3">{appointment.specialty}</span>
+          <span className="fs-3">{appointment.doctor.specialty}</span>
         </div>
         <div className="date">
           <span className="fs-3 bold xs">Appointment Date: </span>
