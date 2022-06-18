@@ -1,7 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectDoctors, selectDoctorById } from '../../redux/doctors/doctor_selector';
-import { createAppointment } from '../../redux/appointments/appointment_async_action';
+import {
+  selectDoctors,
+  selectDoctorById,
+  selectDoctorToBook,
+} from '../../redux/doctors/doctor_selector';
+import {
+  createAppointment,
+} from '../../redux/appointments/appointment_async_action';
 import {
   selectAppointmentsLoading,
   selectAppointmentsMessage,
@@ -14,6 +20,24 @@ const New = () => {
   const doctors = useSelector(selectDoctors);
   const message = useSelector(selectAppointmentsMessage);
   const loading = useSelector(selectAppointmentsLoading);
+  const selectedDoctorIndex = useSelector(selectDoctorToBook);
+  const selectDoctor = useSelector(selectDoctorById(Number(selectedDoctorIndex)));
+
+  const doctorOptions = doctors.map((doctorId) => {
+    const doctor = useSelector(selectDoctorById(doctorId));
+    return (
+      <option
+        key={doctor.id}
+        value={doctor.id}
+      >
+        {doctor.fullname}
+      </option>
+    );
+  });
+
+  useEffect(() => {
+    setDoctor(selectedDoctorIndex);
+  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     const credentials = {
@@ -23,12 +47,9 @@ const New = () => {
       },
     };
     dispatch(createAppointment(credentials));
+    setDoctor('');
+    setDate('');
   };
-
-  const doctorOptions = doctors.map((doctorId) => {
-    const doctor = useSelector(selectDoctorById(doctorId));
-    return <option key={doctor.id} value={doctor.id}>{doctor.fullname}</option>;
-  });
 
   return (
     <div className="booking__new">
@@ -38,11 +59,16 @@ const New = () => {
           {message && <p className="message">{message}</p>}
           <div className="field">
             <select
+              defaultValue={doctor}
               onChange={(e) => setDoctor(e.target.value)}
-              value={doctor}
+              disabled={selectDoctor}
               required
             >
-              <option>Select a doctor</option>
+              <option
+                value={doctor}
+              >
+                {selectedDoctorIndex ? selectDoctor.fullname : 'Choose a doctor'}
+              </option>
               {doctorOptions}
             </select>
           </div>
