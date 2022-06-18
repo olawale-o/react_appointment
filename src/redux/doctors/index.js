@@ -4,6 +4,7 @@ import {
   REQUEST_LOADING,
   SINGLE_DOCTOR,
   DELETE_DOCTOR,
+  DOCTOR_TO_BOOK,
 } from './action_types';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   loading: false,
   error: null,
   message: null,
+  doctor: null,
 };
 
 const doctorReducer = (state = initialState, action) => {
@@ -50,6 +52,8 @@ const doctorReducer = (state = initialState, action) => {
         error: null,
       };
     }
+    case DOCTOR_TO_BOOK:
+      return { ...state, doctor: action.payload };
     default:
       return state;
   }

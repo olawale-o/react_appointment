@@ -10,6 +10,7 @@ import {
   doctorDelete,
   singleDoctor,
   onError,
+  doctorToBook,
 } from './action_creators';
 
 import { normalizedDoctors } from '../schema';
@@ -63,3 +64,5 @@ export const deleteDoctor = (id) => (
     }
   }
 );
+
+export const onDoctorToBook = (id) => doctorToBook(id);

@@ -10,6 +10,7 @@ import {
   success,
   deleteAppointment,
 } from './action_creators';
+import { doctorToBook } from '../doctors/action_creators';
 
 import { normalizedAppointments } from '../schema';
 
@@ -19,6 +20,7 @@ export const createAppointment = (appointment) => (
     try {
       await createAppointmentService(appointment);
       dispatch(success('appointment created'));
+      dispatch(doctorToBook(null));
     } catch (error) {
       dispatch(failure(error.message));
     }
