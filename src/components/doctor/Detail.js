@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
-import { getDoctor } from '../../redux/doctors/doctor_async_action';
+import { useParams, Link, useNavigate } from 'react-router-dom';
+import { getDoctor, onDoctorToBook } from '../../redux/doctors/doctor_async_action';
 import { selectLoading, selectDoctorById } from '../../redux/doctors/doctor_selector';
 import BASE_URI from '../../constants/url';
 import './Detail.css';
+import Button from '../shared/Button';
 
 const Detail = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
   const loading = useSelector(selectLoading);
@@ -17,6 +19,11 @@ const Detail = () => {
       dispatch(getDoctor(id));
     }
   }, [doctor, id]);
+
+  const setDoctorAndNavigate = () => {
+    dispatch(onDoctorToBook(id));
+    navigate('/appointment');
+  };
 
   if (!doctor) return null;
 
@@ -54,7 +61,10 @@ const Detail = () => {
                 </p>
               </div>
               <div className="btn__container">
-                <Link to="/appointment" className="btn btn__large">Book an appointment</Link>
+                <Button
+                  text="Book an appointment"
+                  callBack={setDoctorAndNavigate}
+                />
               </div>
             </div>
           </div>
