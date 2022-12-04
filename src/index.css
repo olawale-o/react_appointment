@@ -362,7 +362,7 @@ span i {
     display: flex;
     flex-wrap: wrap;
     padding: 0.4rem;
-    height: 100%;
+    flex: 1;
     overflow-y: hidden;
   }
 
