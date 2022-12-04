@@ -12,8 +12,16 @@ import {
   selectAppointmentsLoading,
   selectAppointmentsMessage,
 } from '../../redux/appointments/appointment_selector';
+import TimeCalendar from '../shared/TimeCalendar';
+import { MONTHS, showDays } from '../../constants';
 
 const New = () => {
+  const [calendarDate, setCalendarDate] = useState(new Date());
+  const currentMonthDetails = new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 0);
+  const previousMonthDetails = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), 0);
+  const lastDateOfCurrentMonth = currentMonthDetails.getDate();
+  const lastDateOfPreviousMonth = previousMonthDetails.getDate();
+  const lastDayIndexOfPreviousMonth = previousMonthDetails.getDay();
   const dispatch = useDispatch();
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
@@ -35,9 +43,6 @@ const New = () => {
     );
   });
 
-  useEffect(() => {
-    setDoctor(selectedDoctorIndex);
-  }, []);
   const handleSubmit = (e) => {
     e.preventDefault();
     const credentials = {
@@ -50,6 +55,20 @@ const New = () => {
     setDoctor('');
     setDate('');
   };
+
+  const updateDate = (direction) => {
+    const newDate = new Date(calendarDate);
+    if (direction === 'next') {
+      newDate.setMonth(calendarDate.getMonth() + 1);
+    } else {
+      newDate.setMonth(calendarDate.getMonth() - 1);
+    }
+    setCalendarDate(newDate);
+  };
+
+  useEffect(() => {
+    setDoctor(selectedDoctorIndex);
+  }, []);
 
   return (
     <div className="booking__new">
@@ -72,15 +91,17 @@ const New = () => {
               {doctorOptions}
             </select>
           </div>
-          <div className="field">
-            <input
-              type="datetime-local"
-              className="input"
-              onChange={(e) => setDate(e.target.value)}
-              value={date}
-              required
-            />
-          </div>
+          <TimeCalendar
+            monthName={MONTHS[calendarDate.getMonth()]}
+            fullDate={calendarDate.toDateString()}
+            days={showDays(
+              lastDayIndexOfPreviousMonth,
+              lastDateOfCurrentMonth,
+              lastDateOfPreviousMonth,
+            )}
+            prevDate={() => updateDate('prev')}
+            nextDate={() => updateDate('next')}
+          />
           <div className="actions">
             {loading
               ? <div className="form__submission-indicator" />
