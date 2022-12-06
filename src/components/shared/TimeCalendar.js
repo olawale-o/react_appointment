@@ -7,6 +7,7 @@ const TimeCalendar = ({
   days,
   prevDate,
   nextDate,
+  setDate,
 }) => (
   <div className="calendar">
     <div className="month">
@@ -39,6 +40,7 @@ const TimeCalendar = ({
           nextDate={day.nextDate}
           oldDate={day.oldDate}
           fullDate={fullDate}
+          setDate={setDate}
         />
       ))}
     </div>
@@ -58,4 +60,5 @@ TimeCalendar.propTypes = {
   })).isRequired,
   prevDate: PropType.func.isRequired,
   nextDate: PropType.func.isRequired,
+  setDate: PropType.func.isRequired,
 };

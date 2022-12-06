@@ -4,7 +4,12 @@ const DATE = new Date();
 const currentMonth = DATE.getMonth();
 
 const ButtonDate = ({
-  date, prevDate, nextDate, fullDate, oldDate,
+  date,
+  prevDate,
+  nextDate,
+  fullDate,
+  oldDate,
+  setDate,
 }) => {
   if (prevDate) {
     return (
@@ -43,11 +48,7 @@ const ButtonDate = ({
     <button
       type="button"
       className={`day ${date === DATE.getDate() && currentMonth === DATE.getMonth() ? 'today' : 'new-date'}`}
-      onClick={() => {
-        console.log(fullDate.getFullYear());
-        console.log(fullDate.getMonth());
-        console.log(date);
-      }}
+      onClick={() => setDate(new Date(fullDate.getFullYear(), fullDate.getMonth(), date))}
     >
       {date}
     </button>
@@ -60,6 +61,7 @@ ButtonDate.propTypes = {
   nextDate: PropType.bool.isRequired,
   oldDate: PropType.bool.isRequired,
   fullDate: PropType.string.isRequired,
+  setDate: PropType.func.isRequired,
 };
 
 export default ButtonDate;
