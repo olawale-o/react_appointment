@@ -51,7 +51,7 @@ export default TimeCalendar;
 
 TimeCalendar.propTypes = {
   monthName: PropType.string.isRequired,
-  fullDate: PropType.string.isRequired,
+  fullDate: PropType.instanceOf(Date).isRequired,
   days: PropType.arrayOf(PropType.shape({
     date: PropType.number.isRequired,
     prevDate: PropType.bool.isRequired,

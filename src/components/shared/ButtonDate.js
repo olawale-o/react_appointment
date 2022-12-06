@@ -49,7 +49,7 @@ ButtonDate.propTypes = {
   prevDate: PropType.bool.isRequired,
   nextDate: PropType.bool.isRequired,
   oldDate: PropType.bool.isRequired,
-  fullDate: PropType.string.isRequired,
+  fullDate: PropType.instanceOf(Date).isRequired,
   setDate: PropType.func.isRequired,
 };
 
