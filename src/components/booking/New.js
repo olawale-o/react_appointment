@@ -30,7 +30,6 @@ const New = () => {
   const loading = useSelector(selectAppointmentsLoading);
   const selectedDoctorIndex = useSelector(selectDoctorToBook);
   const selectDoctor = useSelector(selectDoctorById(Number(selectedDoctorIndex)));
-  console.log(date);
 
   const doctorOptions = doctors.map((doctorId) => {
     const doctor = useSelector(selectDoctorById(doctorId));
