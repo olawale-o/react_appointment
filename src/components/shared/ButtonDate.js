@@ -11,7 +11,7 @@ const ButtonDate = ({
   oldDate,
   setDate,
 }) => {
-  if (prevDate) {
+  if (prevDate || oldDate) {
     return (
       <button
         type="button"
@@ -27,17 +27,6 @@ const ButtonDate = ({
       <button
         type="button"
         className="day next-date"
-        disabled
-      >
-        {date}
-      </button>
-    );
-  }
-  if (oldDate) {
-    return (
-      <button
-        type="button"
-        className="day prev-date"
         disabled
       >
         {date}
