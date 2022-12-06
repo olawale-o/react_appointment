@@ -93,7 +93,7 @@ const New = () => {
           </div>
           <TimeCalendar
             monthName={MONTHS[calendarDate.getMonth()]}
-            fullDate={calendarDate.toDateString()}
+            fullDate={calendarDate}
             days={showDays(
               lastDayIndexOfPreviousMonth,
               lastDateOfCurrentMonth,

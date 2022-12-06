@@ -15,7 +15,7 @@ const TimeCalendar = ({
       </button>
       <div className="date">
         <h1 className="month__name">{monthName}</h1>
-        <p className="month__full">{fullDate}</p>
+        <p className="month__full">{fullDate.toDateString()}</p>
       </div>
       <button type="button" className="btn-direction next" onClick={nextDate}>
         <i className="bx bxs-chevron-right icon" />
@@ -37,6 +37,8 @@ const TimeCalendar = ({
           date={day.date}
           prevDate={day.prevDate}
           nextDate={day.nextDate}
+          oldDate={day.oldDate}
+          fullDate={fullDate}
         />
       ))}
     </div>
