@@ -13,15 +13,9 @@ import {
   selectAppointmentsMessage,
 } from '../../redux/appointments/appointment_selector';
 import TimeCalendar from '../shared/TimeCalendar';
-import { MONTHS, showDays } from '../../constants';
 
 const New = () => {
   const [calendarDate, setCalendarDate] = useState(new Date());
-  const currentMonthDetails = new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 0);
-  const previousMonthDetails = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), 0);
-  const lastDateOfCurrentMonth = currentMonthDetails.getDate();
-  const lastDateOfPreviousMonth = previousMonthDetails.getDate();
-  const lastDayIndexOfPreviousMonth = previousMonthDetails.getDay();
   const dispatch = useDispatch();
   const [doctor, setDoctor] = useState('');
   const [date, setDate] = useState('');
@@ -92,13 +86,7 @@ const New = () => {
             </select>
           </div>
           <TimeCalendar
-            monthName={MONTHS[calendarDate.getMonth()]}
             fullDate={calendarDate}
-            days={showDays(
-              lastDayIndexOfPreviousMonth,
-              lastDateOfCurrentMonth,
-              lastDateOfPreviousMonth,
-            )}
             prevDate={() => updateDate('prev')}
             nextDate={() => updateDate('next')}
             setDate={setDate}
