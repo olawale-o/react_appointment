@@ -381,6 +381,7 @@ span i {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     /* text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5); */
     align-self: stretch;
@@ -395,7 +396,8 @@ span i {
   .days .day:hover:not(.today) {
     background-color: #262626;
     border-color: #777;
-    cursor: pointer;
+
+    /* cursor: pointer; */
   }
 
   .new-date:hover {
