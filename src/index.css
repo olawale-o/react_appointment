@@ -419,4 +419,9 @@ span i {
     border: 0.2rem solid transparent;
     color: #fff;
   }
+
+  .appointment-date {
+    color: #26674f;
+    font-weight: 600;
+  }
 }
