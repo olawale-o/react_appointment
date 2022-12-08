@@ -10,12 +10,13 @@ const ButtonDate = ({
   fullDate,
   oldDate,
   setDate,
+  appointmentDate,
 }) => {
-  if (prevDate || oldDate) {
+  if (prevDate || oldDate || appointmentDate) {
     return (
       <button
         type="button"
-        className="day prev-date"
+        className={`day prev-date ${appointmentDate && 'appointment-date'}`}
         disabled
       >
         {date}
@@ -49,6 +50,7 @@ ButtonDate.propTypes = {
   prevDate: PropType.bool.isRequired,
   nextDate: PropType.bool.isRequired,
   oldDate: PropType.bool.isRequired,
+  appointmentDate: PropType.bool.isRequired,
   fullDate: PropType.instanceOf(Date).isRequired,
   setDate: PropType.func.isRequired,
 };

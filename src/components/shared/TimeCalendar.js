@@ -8,6 +8,7 @@ const TimeCalendar = ({
   prevDate,
   nextDate,
   setDate,
+  appointmentDates,
 }) => {
   const currentMonthDetails = new Date(fullDate.getFullYear(), fullDate.getMonth() + 1, 0);
   const previousMonthDetails = new Date(fullDate.getFullYear(), fullDate.getMonth(), 0);
@@ -15,7 +16,11 @@ const TimeCalendar = ({
   const lastDateOfPreviousMonth = previousMonthDetails.getDate();
   const lastDayIndexOfPreviousMonth = previousMonthDetails.getDay();
   const days = showDays(
-    lastDayIndexOfPreviousMonth, lastDateOfCurrentMonth, lastDateOfPreviousMonth,
+    lastDayIndexOfPreviousMonth,
+    lastDateOfCurrentMonth,
+    lastDateOfPreviousMonth,
+    currentMonthDetails,
+    appointmentDates,
   );
 
   return (
@@ -49,6 +54,7 @@ const TimeCalendar = ({
             prevDate={day.prevDate}
             nextDate={day.nextDate}
             oldDate={day.oldDate}
+            appointmentDate={day.appointmentDate}
             fullDate={fullDate}
             setDate={setDate}
           />
@@ -65,11 +71,7 @@ TimeCalendar.propTypes = {
   prevDate: PropType.func.isRequired,
   nextDate: PropType.func.isRequired,
   setDate: PropType.func.isRequired,
+  appointmentDates: PropType.arrayOf(PropType.shape({
+    book_for: PropType.string.isRequired,
+  })).isRequired,
 };
-
-// days: PropType.arrayOf(PropType.shape({
-//   date: PropType.number.isRequired,
-//   prevDate: PropType.bool.isRequired,
-//   nextDate: PropType.bool.isRequired,
-//   key: PropType.string.isRequired,
-// })).isRequired,

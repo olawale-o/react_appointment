@@ -90,6 +90,7 @@ const New = () => {
             prevDate={() => updateDate('prev')}
             nextDate={() => updateDate('next')}
             setDate={setDate}
+            appointmentDates={selectDoctor.appointments}
           />
           <div className="actions">
             {loading
