@@ -1,64 +1,70 @@
-import React from 'react';
-import PropType from 'prop-types';
-import ButtonDate from './ButtonDate';
-import { showDays, MONTHS } from '../../constants';
+import { useState } from 'react';
+// import PropType from 'prop-types';
+import {
+  eachDayOfInterval, endOfMonth, format, startOfMonth, getDay, getDate,
+} from 'date-fns';
 
-const TimeCalendar = ({
-  fullDate,
-  prevDate,
-  nextDate,
-  setDate,
-  appointmentDates,
-}) => {
-  const currentMonthDetails = new Date(fullDate.getFullYear(), fullDate.getMonth() + 1, 0);
-  const previousMonthDetails = new Date(fullDate.getFullYear(), fullDate.getMonth(), 0);
-  const lastDateOfCurrentMonth = currentMonthDetails.getDate();
-  const lastDateOfPreviousMonth = previousMonthDetails.getDate();
-  const lastDayIndexOfPreviousMonth = previousMonthDetails.getDay();
-  const days = showDays(
-    lastDayIndexOfPreviousMonth,
-    lastDateOfCurrentMonth,
-    lastDateOfPreviousMonth,
-    currentMonthDetails,
-    appointmentDates,
-  );
+import Calendar from './Calendar';
+
+import { DAYS_OF_THE_WEEK } from '../../constants';
+import style from './TimeCalendar.module.css';
+
+const TimeCalendar = () => {
+  const [date, setDate] = useState(new Date());
+  let currentYear = date.getFullYear();
+  let currentMonth = date.getMonth();
+
+  const firstFullDate = startOfMonth(new Date(currentYear, currentMonth + 1, 0));
+  const lastFullDate = endOfMonth(new Date(currentYear, currentMonth + 1, 0));
+
+  const firstDayOfTheMonth = getDay(startOfMonth(new Date(currentYear, currentMonth, 1)));
+  const lastDateOfMonth = getDate(lastFullDate);
+  const lastDayOfMonth = getDay(endOfMonth(new Date(currentYear, currentMonth, lastDateOfMonth)));
+  const lastDateOfLastMonth = getDate(endOfMonth(new Date(currentYear, currentMonth, 0)));
+
+  const days = eachDayOfInterval({
+    start: firstFullDate,
+    end: lastFullDate,
+  });
+
+  const handleDateChange = (dir) => {
+    currentMonth = dir === 'prev' ? currentMonth - 1 : currentMonth + 1;
+    if (currentMonth < 0 || currentMonth > 11) {
+      setDate(new Date(currentYear, currentMonth));
+      currentYear = date.getFullYear();
+      currentMonth = date.getMonth();
+    } else {
+      setDate(new Date(currentYear, currentMonth));
+    }
+  };
 
   return (
-    <div className="calendar">
-      <div className="month">
-        <button type="button" className="btn-direction prev" onClick={prevDate}>
-          <i className="bx bx-chevron-left icon" />
-        </button>
-        <div className="date">
-          <h1 className="month__name">{MONTHS[fullDate.getMonth()]}</h1>
-          <p className="month__full">{fullDate.toDateString()}</p>
+    <div>
+      <div className={style.wrapper}>
+        <div className={style.icons}>
+          <button type="button" className={`${style.icon} ${style.prev}`} onClick={() => handleDateChange('prev')}>
+            <i className="bx bx-chevron-left" />
+          </button>
         </div>
-        <button type="button" className="btn-direction next" onClick={nextDate}>
-          <i className="bx bxs-chevron-right icon" />
-        </button>
-      </div>
-      <div className="weekdays">
-        <div className="weekday">Sun</div>
-        <div className="weekday">Mon</div>
-        <div className="weekday">Tue</div>
-        <div className="weekday">Wed</div>
-        <div className="weekday">Thu</div>
-        <div className="weekday">Fri</div>
-        <div className="weekday">Sat</div>
-      </div>
-      <div className="days">
-        {days.map((day) => (
-          <ButtonDate
-            key={day.key}
-            date={day.date}
-            prevDate={day.prevDate}
-            nextDate={day.nextDate}
-            oldDate={day.oldDate}
-            appointmentDate={day.appointmentDate}
-            fullDate={fullDate}
-            setDate={setDate}
-          />
-        ))}
+        <div className={style.calendars}>
+          <div className={style.calendar}>
+            <p className={style.current_date}>{format(date, 'MMM yyyy')}</p>
+            <ul className={style.weeks}>
+              {DAYS_OF_THE_WEEK.map((week) => (<li key={week.id}>{week.short}</li>))}
+            </ul>
+            <Calendar
+              firstDayOfTheMonth={firstDayOfTheMonth}
+              lastDayOfMonth={lastDayOfMonth}
+              lastDateOfLastMonth={lastDateOfLastMonth}
+              days={days}
+            />
+          </div>
+        </div>
+        <div className={style.icons}>
+          <button type="button" className={`${style.icon} ${style.next}`} onClick={() => handleDateChange('next')}>
+            <i className="bx bx-chevron-right" />
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -66,12 +72,12 @@ const TimeCalendar = ({
 
 export default TimeCalendar;
 
-TimeCalendar.propTypes = {
-  fullDate: PropType.instanceOf(Date).isRequired,
-  prevDate: PropType.func.isRequired,
-  nextDate: PropType.func.isRequired,
-  setDate: PropType.func.isRequired,
-  appointmentDates: PropType.arrayOf(PropType.shape({
-    book_for: PropType.string.isRequired,
-  })).isRequired,
-};
+// TimeCalendar.propTypes = {
+//   fullDate: PropType.instanceOf(Date).isRequired,
+//   prevDate: PropType.func.isRequired,
+//   nextDate: PropType.func.isRequired,
+//   setDate: PropType.func.isRequired,
+//   appointmentDates: PropType.arrayOf(PropType.shape({
+//     book_for: PropType.string.isRequired,
+//   })).isRequired,
+// };
