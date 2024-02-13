@@ -43,6 +43,7 @@ select {
 button {
   outline: none;
   border: none;
+  cursor: pointer;
 }
 
 .home__header {
@@ -257,6 +258,13 @@ span i {
   height: 1px;
   background: #eee;
   margin: 2rem 0;
+}
+
+.date-button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background: none;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,6 +1,6 @@
 import PropType from 'prop-types';
 
-import { format } from 'date-fns';
+import { format, isPast } from 'date-fns';
 // import { bookings } from './data';
 // import style from './TimeCalendar.module.css';
 
@@ -12,7 +12,9 @@ const CalendarDays = ({ days }) => (
       <li
         key={day}
       >
-        {format(day, 'd')}
+        <button type="button" className="date-button" disabled={isPast(day)}>
+          {format(day, 'd')}
+        </button>
       </li>
     ))}
   </>

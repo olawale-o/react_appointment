@@ -7,7 +7,10 @@ const CalendarNextDays = ({ lastDayOfMonth }) => {
   return (
     <>
       {nextDays.map((day) => (
-        <li key={day} className={style.inactive}>{day - lastDayOfMonth + 1}</li>))}
+        <li key={day} className={style.inactive}>
+          <button type="button" className="date-button">{day - lastDayOfMonth + 1}</button>
+        </li>
+      ))}
     </>
   );
 };

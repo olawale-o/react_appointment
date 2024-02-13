@@ -68,6 +68,7 @@
   position: relative;
   width: calc(100% / 7);
   font-size: 1.4rem;
+  height: 40px;
 }
 
 .wrapper ul {
@@ -75,11 +76,6 @@
   flex-wrap: wrap;
   text-align: center;
 }
-
-/* li {
-  position: relative;
-  width: calc(100% / 7);
-} */
 
 .days li.inactive {
   color: #aaa;
