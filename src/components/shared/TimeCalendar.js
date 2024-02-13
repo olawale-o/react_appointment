@@ -1,5 +1,6 @@
 import { useState } from 'react';
-// import PropType from 'prop-types';
+import PropType from 'prop-types';
+
 import {
   eachDayOfInterval, endOfMonth, format, startOfMonth, getDay, getDate,
 } from 'date-fns';
@@ -9,10 +10,10 @@ import Calendar from './Calendar';
 import { DAYS_OF_THE_WEEK } from '../../constants';
 import style from './TimeCalendar.module.css';
 
-const TimeCalendar = () => {
-  const [date, setDate] = useState(new Date());
-  let currentYear = date.getFullYear();
-  let currentMonth = date.getMonth();
+const TimeCalendar = ({ setDate }) => {
+  const [currDate, setCurrDate] = useState(new Date());
+  let currentYear = currDate.getFullYear();
+  let currentMonth = currDate.getMonth();
 
   const firstFullDate = startOfMonth(new Date(currentYear, currentMonth + 1, 0));
   const lastFullDate = endOfMonth(new Date(currentYear, currentMonth + 1, 0));
@@ -31,10 +32,10 @@ const TimeCalendar = () => {
     currentMonth = dir === 'prev' ? currentMonth - 1 : currentMonth + 1;
     if (currentMonth < 0 || currentMonth > 11) {
       setDate(new Date(currentYear, currentMonth));
-      currentYear = date.getFullYear();
-      currentMonth = date.getMonth();
+      currentYear = currDate.getFullYear();
+      currentMonth = currDate.getMonth();
     } else {
-      setDate(new Date(currentYear, currentMonth));
+      setCurrDate(new Date(currentYear, currentMonth));
     }
   };
 
@@ -48,7 +49,7 @@ const TimeCalendar = () => {
         </div>
         <div className={style.calendars}>
           <div className={style.calendar}>
-            <p className={style.current_date}>{format(date, 'MMM yyyy')}</p>
+            <p className={style.current_date}>{format(currDate, 'MMM yyyy')}</p>
             <ul className={style.weeks}>
               {DAYS_OF_THE_WEEK.map((week) => (<li key={week.id}>{week.short}</li>))}
             </ul>
@@ -57,6 +58,7 @@ const TimeCalendar = () => {
               lastDayOfMonth={lastDayOfMonth}
               lastDateOfLastMonth={lastDateOfLastMonth}
               days={days}
+              setDate={setDate}
             />
           </div>
         </div>
@@ -72,12 +74,6 @@ const TimeCalendar = () => {
 
 export default TimeCalendar;
 
-// TimeCalendar.propTypes = {
-//   fullDate: PropType.instanceOf(Date).isRequired,
-//   prevDate: PropType.func.isRequired,
-//   nextDate: PropType.func.isRequired,
-//   setDate: PropType.func.isRequired,
-//   appointmentDates: PropType.arrayOf(PropType.shape({
-//     book_for: PropType.string.isRequired,
-//   })).isRequired,
-// };
+TimeCalendar.propTypes = {
+  setDate: PropType.func.isRequired,
+};

@@ -19,5 +19,5 @@ export default CalendarPreviousDays;
 
 CalendarPreviousDays.propTypes = {
   firstDayOfTheMonth: PropType.number.isRequired,
-  lastDateOfLastMonth: PropType.instanceOf(Date).isRequired,
+  lastDateOfLastMonth: PropType.number.isRequired,
 };

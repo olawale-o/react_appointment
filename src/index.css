@@ -267,6 +267,10 @@ span i {
   background: none;
 }
 
+.date-button:disabled {
+  cursor: default;
+}
+
 @media screen and (min-width: 768px) {
   .table__row {
     display: flex;

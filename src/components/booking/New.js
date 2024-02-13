@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { format } from 'date-fns';
 import {
   selectDoctors,
   selectDoctorById,
@@ -19,7 +20,7 @@ const New = () => {
   const [calendarDate, setCalendarDate] = useState(new Date());
   const dispatch = useDispatch();
   const [doctor, setDoctor] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date());
   const doctors = useSelector(selectDoctors);
   const message = useSelector(selectAppointmentsMessage);
   const loading = useSelector(selectAppointmentsLoading);
@@ -47,8 +48,8 @@ const New = () => {
       },
     };
     dispatch(createAppointment(credentials));
-    setDoctor('');
-    setDate('');
+    // setDoctor('');
+    // setDate('');
   };
 
   const updateDate = (direction) => {
@@ -85,6 +86,9 @@ const New = () => {
               </option>
               {doctorOptions}
             </select>
+          </div>
+          <div className="field">
+            <input type="text" className="input" value={format(date, 'yyyy-MM-dd')} disabled />
           </div>
           <TimeCalendar
             fullDate={calendarDate}

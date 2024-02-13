@@ -8,7 +8,7 @@ const CalendarNextDays = ({ lastDayOfMonth }) => {
     <>
       {nextDays.map((day) => (
         <li key={day} className={style.inactive}>
-          <button type="button" className="date-button">{day - lastDayOfMonth + 1}</button>
+          <button type="button" className="date-button" disabled>{day - lastDayOfMonth + 1}</button>
         </li>
       ))}
     </>

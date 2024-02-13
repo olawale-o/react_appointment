@@ -9,6 +9,7 @@ const Calendar = ({
   lastDayOfMonth,
   lastDateOfLastMonth,
   days,
+  setDate,
 }) => (
   <ul className={style.days}>
     <>
@@ -16,7 +17,7 @@ const Calendar = ({
         firstDayOfTheMonth={firstDayOfTheMonth}
         lastDateOfLastMonth={lastDateOfLastMonth}
       />
-      <CalendarDays days={days} />
+      <CalendarDays days={days} setDate={setDate} />
       <CalendarNextDays lastDayOfMonth={lastDayOfMonth} />
     </>
   </ul>
@@ -27,6 +28,7 @@ export default Calendar;
 Calendar.propTypes = {
   firstDayOfTheMonth: PropType.number.isRequired,
   lastDayOfMonth: PropType.number.isRequired,
-  lastDateOfLastMonth: PropType.instanceOf(Date).isRequired,
+  lastDateOfLastMonth: PropType.number.isRequired,
   days: PropType.arrayOf(Date).isRequired,
+  setDate: PropType.func.isRequired,
 };
