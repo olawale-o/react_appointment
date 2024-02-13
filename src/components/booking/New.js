@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { format } from 'date-fns';
 import {
   selectDoctors,
   selectDoctorById,
@@ -13,18 +15,12 @@ import {
   selectAppointmentsMessage,
 } from '../../redux/appointments/appointment_selector';
 import TimeCalendar from '../shared/TimeCalendar';
-import { MONTHS, showDays } from '../../constants';
 
 const New = () => {
   const [calendarDate, setCalendarDate] = useState(new Date());
-  const currentMonthDetails = new Date(calendarDate.getFullYear(), calendarDate.getMonth() + 1, 0);
-  const previousMonthDetails = new Date(calendarDate.getFullYear(), calendarDate.getMonth(), 0);
-  const lastDateOfCurrentMonth = currentMonthDetails.getDate();
-  const lastDateOfPreviousMonth = previousMonthDetails.getDate();
-  const lastDayIndexOfPreviousMonth = previousMonthDetails.getDay();
   const dispatch = useDispatch();
   const [doctor, setDoctor] = useState('');
-  const [date, setDate] = useState('');
+  const [date, setDate] = useState(new Date());
   const doctors = useSelector(selectDoctors);
   const message = useSelector(selectAppointmentsMessage);
   const loading = useSelector(selectAppointmentsLoading);
@@ -52,8 +48,8 @@ const New = () => {
       },
     };
     dispatch(createAppointment(credentials));
-    setDoctor('');
-    setDate('');
+    // setDoctor('');
+    // setDate('');
   };
 
   const updateDate = (direction) => {
@@ -91,16 +87,15 @@ const New = () => {
               {doctorOptions}
             </select>
           </div>
+          <div className="field">
+            <input type="text" className="input" value={format(date, 'yyyy-MM-dd')} disabled />
+          </div>
           <TimeCalendar
-            monthName={MONTHS[calendarDate.getMonth()]}
-            fullDate={calendarDate.toDateString()}
-            days={showDays(
-              lastDayIndexOfPreviousMonth,
-              lastDateOfCurrentMonth,
-              lastDateOfPreviousMonth,
-            )}
+            fullDate={calendarDate}
             prevDate={() => updateDate('prev')}
             nextDate={() => updateDate('next')}
+            setDate={setDate}
+            appointmentDates={selectDoctor.appointments}
           />
           <div className="actions">
             {loading

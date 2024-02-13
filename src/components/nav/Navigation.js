@@ -57,9 +57,9 @@ const Navigation = () => {
             <li className={styles.navItem}>
               <NavLink to="/doctor/new" activeclassname="active" className={styles.navLink}>ADD A DOCTOR</NavLink>
             </li>
-            <li className={styles.navItem}>
+            {/* <li className={styles.navItem}>
               <NavLink to="/appointment/new" className={styles.navLink}>BOOK APPOINTMENT</NavLink>
-            </li>
+            </li> */}
             <li className={styles.navItem}>
               <NavLink to="/appointment/all" className={styles.navLink}>MY APPOINTMENTS</NavLink>
             </li>

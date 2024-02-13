@@ -40,6 +40,12 @@ select {
   color: #ccc;
 }
 
+button {
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
 .home__header {
   margin-bottom: 2rem;
   text-align: center;
@@ -254,6 +260,17 @@ span i {
   margin: 2rem 0;
 }
 
+.date-button {
+  display: block;
+  width: 100%;
+  height: 40px;
+  background: none;
+}
+
+.date-button:disabled {
+  cursor: default;
+}
+
 @media screen and (min-width: 768px) {
   .table__row {
     display: flex;
@@ -313,10 +330,10 @@ span i {
   .btn-direction {
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+    background: #fff;
   }
 
   .btn-direction:hover {
-    background-color: #777;
     border-radius: 100%;
   }
 
@@ -332,10 +349,12 @@ span i {
     text-transform: uppercase;
     margin-bottom: 1rem;
     letter-spacing: 0.2rem;
+    color: #fff;
   }
 
   .month__full {
     font-size: 1.6rem;
+    color: #ccc;
   }
 
   .weekdays {
@@ -374,7 +393,9 @@ span i {
     display: flex;
     justify-content: center;
     align-items: center;
-    text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+
+    /* text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.5); */
     align-self: stretch;
     background: none;
   }
@@ -387,7 +408,12 @@ span i {
   .days .day:hover:not(.today) {
     background-color: #262626;
     border-color: #777;
-    cursor: pointer;
+
+    /* cursor: pointer; */
+  }
+
+  .new-date:hover {
+    color: #fff;
   }
 
   .next-date,
@@ -395,7 +421,8 @@ span i {
     opacity: 0.5;
   }
 
-  .prev-date:hover {
+  .prev-date:hover,
+  .next-date:hover {
     border-color: transparent !important;
     cursor: default !important;
     background-color: transparent !important;
@@ -404,5 +431,11 @@ span i {
   .today {
     background-color: #167e56 !important;
     border: 0.2rem solid transparent;
+    color: #fff;
+  }
+
+  .appointment-date {
+    color: #26674f;
+    font-weight: 600;
   }
 }

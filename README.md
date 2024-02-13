@@ -4,7 +4,7 @@
 
 ScreenShot
 
-![screenshot](https://github.com/olawale-o/react_appointment/blob/booking/screenshot.png?raw=true")
+![screenshot](https://github.com/olawale-o/react_appointment/blob/main/screenshot.png?raw=true")
 
 # Built With
 - CSS

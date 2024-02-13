@@ -4,18 +4,32 @@ import { Link, useNavigate } from 'react-router-dom';
 import style from './auth.module.css';
 import { login } from '../../redux/auth/auth_async_actions';
 import authSelector from '../../redux/auth/auth_selector';
+import { sliderImages } from '../../constants';
 
+let imageInterval = null;
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, user } = useSelector(authSelector);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [counter, setCounter] = useState(0);
+  const [currentImage, setCurrentImage] = useState(sliderImages[counter]);
   useEffect(() => {
     if (user) {
       navigate('/', { replace: true });
     }
   }, [user]);
+
+  useEffect(() => {
+    imageInterval = setInterval(() => {
+      setCounter(counter === sliderImages.length - 1 ? 0 : counter + 1);
+      setCurrentImage(sliderImages[counter]);
+    }, 5000);
+    return () => {
+      clearInterval(imageInterval);
+    };
+  }, [counter]);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     const credentials = {
@@ -24,7 +38,12 @@ const Login = () => {
     dispatch(login(credentials));
   };
   return (
-    <div className={style.loginContainer}>
+    <div
+      className={style.loginContainer}
+      style={{
+        backgroundImage: `url(${currentImage.image})`,
+      }}
+    >
       <div className={style.form}>
         <form onSubmit={handleFormSubmit}>
           <h3>Book an appointment</h3>
